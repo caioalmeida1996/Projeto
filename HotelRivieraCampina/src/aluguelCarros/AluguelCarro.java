@@ -2,6 +2,7 @@ package aluguelCarros;
 
 import java.util.Calendar;
 
+import contrato.Contrato;
 import servico.ServicoSuplementar;
 
 /**
@@ -32,8 +33,8 @@ public class AluguelCarro extends ServicoSuplementar{
 	 * 			O tipo de carro a ser alugado
 	 */
 	public AluguelCarro(Calendar dataInicial, Calendar dataFinal, String placa,
-			TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo) {
-		super(dataInicial, dataFinal);
+			TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo,Contrato contrato) {
+		super(dataInicial, dataFinal, contrato);
 		this.placa = placa;
 		this.tanque = tanque;
 		this.seguro = seguro;

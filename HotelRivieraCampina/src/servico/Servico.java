@@ -2,6 +2,8 @@ package servico;
 
 import java.util.Calendar;
 
+import contrato.Contrato;
+
 /**
  * Classe Servico
  * 
@@ -11,6 +13,7 @@ import java.util.Calendar;
 public abstract class Servico {
 	
 	private Calendar dataInicial, dataFinal; // as datas em que o servico foi iniciado e finalizado, respectivamente.
+	private Contrato contrato;
 	
 	/**
 	 * Construtor da classe
@@ -19,9 +22,10 @@ public abstract class Servico {
 	 * @param dataFinal
 	 * 			data de fim de um servico
 	 */
-	public Servico(Calendar dataInicial, Calendar dataFinal){
+	public Servico(Calendar dataInicial, Calendar dataFinal,Contrato contrato){
 		this.dataInicial = dataInicial;
 		this.dataFinal = dataFinal;
+		this.contrato = contrato;
 	}
 
 	/**
@@ -63,5 +67,16 @@ public abstract class Servico {
 	 * @return um valor real que representa o custo
 	 */
 	public abstract double getCusto();
+
+	public Contrato getContrato() {
+		return contrato;
+	}
+
+	public void setContrato(Contrato contrato) {
+		this.contrato = contrato;
+	}
+	
+	
+	
 	
 }// fim da classe

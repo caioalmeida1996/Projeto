@@ -8,38 +8,52 @@ import endereco.Endereco;
 import hospede.Hospede;
 import hotel.Hotel;
 
-public class GerenteHospede extends Hotel {
+public class GerenteHospede{
+
+	 private List<Hospede> hospedes;
 
 
-
-        public GerenteHospede(List<Contrato> contratos) {
-                super(contratos);
+        public GerenteHospede() {
+        	
         }
-
+        
+        
+        
+        public List<Hospede> getHospedes(){
+        	return hospedes;
+        }
+        
+        public void criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco, Contrato contrato){
+        	Hospede hospedeNovo = new Hospede(nome, cpf, dataNascimento, endereco, contrato);
+        	hospedes.add(hospedeNovo);
+        }
+        
+        public void removeHospede(Hospede hospede){
+        	hospedes.remove(hospede);
+        }
+        
         public void atualizaHospede(String nomeVelho, Hospede hospedeNovo){
-                for (int i = 0; i < super.getContratos().size(); i++) {
-                        if (super.getContratos().get(i).getHospede().getNome().equals(nomeVelho)) {
-                                super.getContratos().get(i).getHospede().setNome(hospedeNovo.getNome());
-                                super.getContratos().get(i).getHospede().setCpf(hospedeNovo.getCpf());
-                                super.getContratos().get(i).getHospede().setDataNascimento(hospedeNovo.getDataNascimento());
-                                System.out.println("Hospede atualizado com sucesso");
-                                
-                        }
-
-                }
+               for (int i = 0; i < hospedes.size(); i++) {
+            	   if (hospedes.get(i).getNome().equals(nomeVelho)) {
+            		   hospedes.get(i).setNome(hospedeNovo.getNome());
+            		   hospedes.get(i).setEndereco(hospedeNovo.getEndereco());
+            		   hospedes.get(i).setDataNascimento(hospedeNovo.getDataNascimento());
+            		   hospedes.get(i).setCpf(hospedeNovo.getCpf());
+					
+				}
+				
+			}
 
         }
 
         public Hospede pesquisaHospede(String nome) {
-        	for (int i = 0; i < super.getContratos().size(); i++) {
-        		 if (super.getContratos().get(i).getHospede().getNome().equals(nome)){
-        			 return super.getContratos().get(i).getHospede();
-        		 }
-        		
-				
-			}
-        	 System.out.println("Hospede não encontrado");
-			 return null;
+        	for (int i = 0; i < hospedes.size(); i++) {
+         	   if (hospedes.get(i).getNome().equals(nome)) {
+         		   return hospedes.get(i);
+         	   }
+         	   
+         	   }
+			return null;
         }
         
         

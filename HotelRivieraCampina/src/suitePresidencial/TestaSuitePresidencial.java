@@ -24,7 +24,7 @@ public class TestaSuitePresidencial {
 		
 		// Em uma suite presidencial que foi alugada e entregue no mesmo dia
 		// espera-se que seja cobrado o valor de uma diaria, 1200 R$.
-		SuitePresidencial suite = new SuitePresidencial(dataInicial, dataFinal);
+		SuitePresidencial suite = new SuitePresidencial(dataInicial, dataFinal, null);
 		assertTrue(suite.getCusto() == 1200);
 		
 		// Dois dias de diferenca, 2400 R$
@@ -44,8 +44,8 @@ public class TestaSuitePresidencial {
 		dataInicial.set(2004, 10, 13);
 		dataFinal.set(2004, 10, 13);
 		
-		SuitePresidencial suite1 = new SuitePresidencial(dataInicial, dataFinal);
-		SuitePresidencial suite2 = new SuitePresidencial(dataInicial, dataFinal);
+		SuitePresidencial suite1 = new SuitePresidencial(dataInicial, dataFinal, null);
+		SuitePresidencial suite2 = new SuitePresidencial(dataInicial, dataFinal, null);
 		
 		assertTrue(suite1.equals(suite1));
 		assertTrue(suite1.equals(suite2));
@@ -56,7 +56,7 @@ public class TestaSuitePresidencial {
 		outraData1.set(2015, 5, 1);
 		outraData2.set(2015, 5, 13);
 		
-		SuitePresidencial suite3 = new SuitePresidencial(outraData1, outraData2);
+		SuitePresidencial suite3 = new SuitePresidencial(outraData1, outraData2, null);
 		assertTrue(suite3.equals(suite3));
 		assertFalse(suite1.equals(suite3));
 		assertFalse(suite3.equals(suite1));
@@ -69,7 +69,7 @@ public class TestaSuitePresidencial {
 	public void testaToString(){
 		dataInicial.set(2004, 9, 13);
 		dataFinal.set(2004, 9, 13);
-		SuitePresidencial suite1 = new SuitePresidencial(dataInicial, dataFinal);
+		SuitePresidencial suite1 = new SuitePresidencial(dataInicial, dataFinal, null);
 		
 		String mensagem = "Suite Presidencial:\n" +
 				  "Data Inicial: 13/9/2004\n" +

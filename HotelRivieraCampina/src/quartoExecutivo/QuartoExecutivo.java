@@ -2,6 +2,7 @@ package quartoExecutivo;
 
 import java.util.Calendar;
 
+import contrato.Contrato;
 import quarto.Quarto;
 
 /**
@@ -25,8 +26,8 @@ public class QuartoExecutivo extends Quarto{
 	 * @param camaExtra
 	 * 			Assegura se o quarto eh alugado com cama extra ou nao
 	 */
-	public QuartoExecutivo(Calendar dataInicial, Calendar dataFinal, TipoQuartoExecutivo tipoQuarto, TemCamaExtra camaExtra) {
-		super(dataInicial, dataFinal);
+	public QuartoExecutivo(Calendar dataInicial, Calendar dataFinal, TipoQuartoExecutivo tipoQuarto, TemCamaExtra camaExtra, Contrato contrato) {
+		super(dataInicial, dataFinal, contrato);
 		this.tipoQuarto = tipoQuarto;
 		this.camaExtra = camaExtra;
 	}

@@ -2,6 +2,7 @@ package suitePresidencial;
 
 import java.util.Calendar;
 
+import contrato.Contrato;
 import quarto.Quarto;
 
 /**
@@ -21,8 +22,8 @@ public class SuitePresidencial extends Quarto{
 	 * @param dataFinal
 	 * 			(Calendar) A data de fim do aluguel da suite
 	 */
-	public SuitePresidencial(Calendar dataInicial, Calendar dataFinal) {
-		super(dataInicial, dataFinal);		
+	public SuitePresidencial(Calendar dataInicial, Calendar dataFinal,Contrato contrato) {
+		super(dataInicial, dataFinal, contrato);		
 	}
 	
 	/**

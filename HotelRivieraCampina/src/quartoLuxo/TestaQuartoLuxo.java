@@ -28,7 +28,7 @@ public class TestaQuartoLuxo {
 		dataFinal.set(1973, 8, 7);
 		
 		// Criando um quarto luxo simples com essas datas
-		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.SIM);
+		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.SIM, null);
 		
 		// Assertivas
 		assertTrue(quarto.getDataInicial().equals(dataInicial));
@@ -49,7 +49,7 @@ public class TestaQuartoLuxo {
 		
 		// Em um quarto luxo simples que foi alugado e entregue no mesmo dia
 		// espera-se que seja cobrado o valor de uma diaria, 520 R$.
-		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO);
+		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO, null);
 		assertTrue(quarto.getCusto() == 520);
 		
 		// Em dois dias de alguel de um quarto luxo simples eh esperado um custo de duas diarias, 1040 R$
@@ -70,7 +70,7 @@ public class TestaQuartoLuxo {
 		
 		// Em um quarto luxo duplo que foi alugado e entregue no mesmo dia
 		// espera-se que seja cobrado o valor de uma diaria, 570 R$.
-		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.DUPLO, TemCamaExtra.NAO);
+		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.DUPLO, TemCamaExtra.NAO, null);
 		assertTrue(quarto.getCusto() == 570);
 		
 		// Em dois dias de alguel de um quarto luxo duplo eh esperado um custo de duas diarias, 1140 R$
@@ -91,7 +91,7 @@ public class TestaQuartoLuxo {
 		
 		// Em um quarto luxo triplo que foi alugado e entregue no mesmo dia
 		// espera-se que seja cobrado o valor de uma diaria, 620 R$.
-		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.TRIPLO, TemCamaExtra.SIM);
+		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.TRIPLO, TemCamaExtra.SIM, null);
 		assertTrue(quarto.getCusto() == 620);
 		
 		// Em dois dias de alguel de um quarto luxo triplo eh esperado um custo de duas diarias, 1240 R$
@@ -108,13 +108,13 @@ public class TestaQuartoLuxo {
 		dataInicial.set(2004, 10, 13);
 		dataFinal.set(2004, 10, 13);
 		
-		QuartoLuxo quarto1 = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO);
-		QuartoLuxo quarto2 = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO);
+		QuartoLuxo quarto1 = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO, null);
+		QuartoLuxo quarto2 = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO, null);
 		assertTrue(quarto1.equals(quarto1));
 		assertTrue(quarto1.equals(quarto2));
 		assertTrue(quarto2.equals(quarto1));
 		
-		QuartoLuxo quarto3 = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.TRIPLO, TemCamaExtra.NAO);
+		QuartoLuxo quarto3 = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.TRIPLO, TemCamaExtra.NAO, null);
 		assertFalse(quarto1.equals(quarto3));
 		assertFalse(quarto3.equals(quarto1));
 		
@@ -123,7 +123,7 @@ public class TestaQuartoLuxo {
 		outraData1.set(2015, 5, 1);
 		outraData2.set(2015, 5, 13);
 		
-		QuartoLuxo quarto4 = new QuartoLuxo(outraData1, outraData2, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO);
+		QuartoLuxo quarto4 = new QuartoLuxo(outraData1, outraData2, TipoQuartoLuxo.SIMPLES, TemCamaExtra.NAO, null);
 		
 		assertFalse(quarto4.equals(quarto1));
 		assertFalse(quarto1.equals(quarto4));
@@ -131,15 +131,15 @@ public class TestaQuartoLuxo {
 		assertFalse(quarto3.equals(quarto4));
 		assertTrue(quarto4.equals(quarto4));
 		
-		QuartoLuxo quarto5 = new QuartoLuxo(outraData1, outraData2, TipoQuartoLuxo.SIMPLES, TemCamaExtra.SIM);
+		QuartoLuxo quarto5 = new QuartoLuxo(outraData1, outraData2, TipoQuartoLuxo.SIMPLES, TemCamaExtra.SIM, null);
 		assertFalse(quarto5.equals(quarto4));
 		assertFalse(quarto4.equals(quarto5));
 		assertTrue(quarto5.equals(quarto5));
 		
-		QuartoLuxo quarto6 = new QuartoLuxo(outraData1, outraData2, TipoQuartoLuxo.SIMPLES, TemCamaExtra.SIM);
+		QuartoLuxo quarto6 = new QuartoLuxo(outraData1, outraData2, TipoQuartoLuxo.SIMPLES, TemCamaExtra.SIM, null);
 		assertTrue(quarto5.equals(quarto6));
 		assertTrue(quarto6.equals(quarto5));
-		assertFalse(quarto5.equals(new SuitePresidencial(outraData1, outraData2)));
+		assertFalse(quarto5.equals(new SuitePresidencial(outraData1, outraData2, null)));
 	}
 
 	@Test
@@ -147,7 +147,7 @@ public class TestaQuartoLuxo {
 		dataInicial.set(2004, 9, 13);
 		dataFinal.set(2004, 9, 13);
 		
-		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.TRIPLO, TemCamaExtra.SIM);
+		QuartoLuxo quarto = new QuartoLuxo(dataInicial, dataFinal, TipoQuartoLuxo.TRIPLO, TemCamaExtra.SIM, null);
 		
 		String mensagem = "Quarto Luxo:\n" +
 				  "Tipo: TRIPLO\n" +

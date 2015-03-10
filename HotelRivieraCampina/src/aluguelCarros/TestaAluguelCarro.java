@@ -22,7 +22,7 @@ public class TestaAluguelCarro {
 		data1.set(2010, 10, 28);
 		data2.set(2011, 7, 19);
 		
-		AluguelCarro carro = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO);
+		AluguelCarro carro = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO, null);
 		
 		assertTrue(carro.getDataInicial().getTime().equals(data1.getTime()));
 		assertTrue(carro.getDataFinal().getTime().equals(data2.getTime()));
@@ -38,7 +38,7 @@ public class TestaAluguelCarro {
 		data1.set(2010, 10, 28);
 		data2.set(2010, 10, 28);
 		
-		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.EXECUTIVO);
+		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.EXECUTIVO, null);
 		assertTrue(carro1.getDiaria() == 60);
 		assertTrue(carro1.getNumeroDiasAluguel() == 1);
 		assertTrue(carro1.getCusto() == 60);
@@ -49,7 +49,7 @@ public class TestaAluguelCarro {
 		data3.set(2013, 5, 18);
 		data4.set(2013, 5, 19);
 
-		AluguelCarro carro2 = new AluguelCarro(data3, data4, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.EXECUTIVO);
+		AluguelCarro carro2 = new AluguelCarro(data3, data4, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.EXECUTIVO, null);
 		assertTrue(carro2.getDiaria() == 60);
 		assertTrue(carro2.getNumeroDiasAluguel() == 2);
 		assertTrue(carro2.getCusto() == 120);
@@ -62,25 +62,25 @@ public class TestaAluguelCarro {
 		data2.set(2010, 10, 28);
 		
 		// Carro com tanque cheio e sem seguro tem 150 R$ incrementados na conta
-		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.EXECUTIVO);
+		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.EXECUTIVO, null);
 		assertTrue(carro1.getDiaria() == 60);
 		assertTrue(carro1.getNumeroDiasAluguel() == 1);
 		assertTrue(carro1.getCusto() == 210);
 		
 		// Carro sem tanque cheio e com seguro custa 100 R$ a mais
-		AluguelCarro carro2 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.SIM, TipoCarro.EXECUTIVO);
+		AluguelCarro carro2 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.SIM, TipoCarro.EXECUTIVO, null);
 		assertTrue(carro2.getDiaria() == 60);
 		assertTrue(carro2.getNumeroDiasAluguel() == 1);
 		assertTrue(carro2.getCusto() == 160);
 		
 		// Carro com tanque cheio e com seguro custa 250 R$ a mais
-		AluguelCarro carro3 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO);
+		AluguelCarro carro3 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO, null);
 		assertTrue(carro3.getDiaria() == 60);
 		assertTrue(carro3.getNumeroDiasAluguel() == 1);
 		assertTrue(carro3.getCusto() == 310);
 		
 		// Carro com tanque cheio e com seguro custa 250 R$ a mais
-		AluguelCarro carro4 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO);
+		AluguelCarro carro4 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO, null);
 		assertTrue(carro4.getDiaria() == 60);
 		assertTrue(carro4.getNumeroDiasAluguel() == 1);
 		assertTrue(carro4.getCusto() == 310);
@@ -91,7 +91,7 @@ public class TestaAluguelCarro {
 		data1.set(2010, 10, 28);
 		data2.set(2010, 10, 28);
 		
-		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.LUXO);
+		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.LUXO, null);
 		assertTrue(carro1.getDiaria() == 100);
 		assertTrue(carro1.getNumeroDiasAluguel() == 1);
 		assertTrue(carro1.getCusto() == 100);
@@ -102,7 +102,7 @@ public class TestaAluguelCarro {
 		data3.set(2013, 5, 18);
 		data4.set(2013, 5, 19);
 
-		AluguelCarro carro2 = new AluguelCarro(data3, data4, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.LUXO);
+		AluguelCarro carro2 = new AluguelCarro(data3, data4, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.LUXO, null);
 		assertTrue(carro2.getDiaria() == 100);
 		assertTrue(carro2.getNumeroDiasAluguel() == 2);
 		assertTrue(carro2.getCusto() == 200);
@@ -115,19 +115,19 @@ public class TestaAluguelCarro {
 		data2.set(2010, 10, 28);
 		
 		// Carro com tanque cheio e sem seguro tem 150 R$ incrementados na conta
-		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO);
+		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO, null);
 		assertTrue(carro1.getDiaria() == 100);
 		assertTrue(carro1.getNumeroDiasAluguel() == 1);
 		assertTrue(carro1.getCusto() == 250);
 		
 		// Carro sem tanque cheio e com seguro custa 100 R$ a mais
-		AluguelCarro carro2 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.SIM, TipoCarro.LUXO);
+		AluguelCarro carro2 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.SIM, TipoCarro.LUXO, null);
 		assertTrue(carro2.getDiaria() == 100);
 		assertTrue(carro2.getNumeroDiasAluguel() == 1);
 		assertTrue(carro2.getCusto() == 200);
 		
 		// Carro com tanque cheio e com seguro custa 250 R$ a mais
-		AluguelCarro carro3 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.LUXO);
+		AluguelCarro carro3 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.LUXO, null);
 		assertTrue(carro3.getDiaria() == 100);
 		assertTrue(carro3.getNumeroDiasAluguel() == 1);
 		assertTrue(carro3.getCusto() == 350);
@@ -138,7 +138,7 @@ public class TestaAluguelCarro {
 		data3.set(2013, 5, 18);
 		data4.set(2013, 5, 19);
 		
-		AluguelCarro carro4 = new AluguelCarro(data3, data4, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.SIM, TipoCarro.LUXO);
+		AluguelCarro carro4 = new AluguelCarro(data3, data4, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.SIM, TipoCarro.LUXO, null);
 		assertTrue(carro4.getDiaria() == 100);
 		assertTrue(carro4.getNumeroDiasAluguel() == 2);
 		assertTrue(carro4.getCusto() == 300);
@@ -147,25 +147,25 @@ public class TestaAluguelCarro {
 	@Test
 	public void testaEquals(){
 	
-		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO);
-		AluguelCarro carro2 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO);
+		AluguelCarro carro1 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO, null);
+		AluguelCarro carro2 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO, null);
 		
 		assertTrue(carro1.equals(carro1));
 		assertTrue(carro1.equals(carro2));
 		
-		AluguelCarro carro3 = new AluguelCarro(data1, data2, "HVG-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO);
+		AluguelCarro carro3 = new AluguelCarro(data1, data2, "HVG-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO, null);
 		assertFalse(carro1.equals(carro3));
 		assertFalse(carro2.equals(carro3));
 		
-		AluguelCarro carro4 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.LUXO);
+		AluguelCarro carro4 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.LUXO, null);
 		assertFalse(carro1.equals(carro4));
 		assertFalse(carro2.equals(carro4));
 		
-		AluguelCarro carro5 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.LUXO);
+		AluguelCarro carro5 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.LUXO, null);
 		assertFalse(carro1.equals(carro5));
 		assertFalse(carro2.equals(carro5));
 		
-		AluguelCarro carro6 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.EXECUTIVO);
+		AluguelCarro carro6 = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.EXECUTIVO, null);
 		assertFalse(carro1.equals(carro6));
 		assertFalse(carro2.equals(carro6));
 	}// fim do metodo
@@ -175,7 +175,7 @@ public class TestaAluguelCarro {
 		data1.set(2010, 6, 20);
 		data2.set(2010, 6, 21);
 		
-		AluguelCarro carro = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO);
+		AluguelCarro carro = new AluguelCarro(data1, data2, "HVH-1404", TemTanqueCheio.SIM, TemSeguro.NAO, TipoCarro.LUXO, null);
 		
 		String mensagem = "Aluguel de Carro:\n" +
 						  "Data Inicial: 20/6/2010\n" +

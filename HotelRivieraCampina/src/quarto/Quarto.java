@@ -2,6 +2,7 @@ package quarto;
 
 import java.util.Calendar;
 
+import contrato.Contrato;
 import servico.Servico;
 
 /**
@@ -19,8 +20,8 @@ public abstract class Quarto extends Servico{
 	 * @param dataFinal
 	 * 			(Calendar) A data do fim do aluguel de quarto.
 	 */
-	public Quarto(Calendar dataInicial, Calendar dataFinal){
-		super(dataInicial, dataFinal);
+	public Quarto(Calendar dataInicial, Calendar dataFinal, Contrato contrato){
+		super(dataInicial, dataFinal, contrato);
 	}
 
 	/**

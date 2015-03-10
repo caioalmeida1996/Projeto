@@ -13,25 +13,25 @@ import servico.*;
  */
 public class Contrato {
 
-	private Hospede hospede;
+	//private Hospede hospede;
 	private String numCartao;
 	private Quarto quarto;
 	private ArrayList<ServicoSuplementar> servicos;
 	
-	public Contrato(Hospede hospede, String numCartao, Quarto quarto) {
+	public Contrato(String numCartao, Quarto quarto) {
 		super();
-		this.hospede = hospede;
+		//this.hospede = hospede;
 		this.numCartao = numCartao;
 		this.quarto = quarto;
 	}
 
-	public Hospede getHospede() {
+	/*public Hospede getHospede() {
 		return hospede;
 	}
 
 	public void setHospede(Hospede hospede) {
 		this.hospede = hospede;
-	}
+	}*/
 
 	public String getNumCartao() {
 		return numCartao;

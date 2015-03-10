@@ -21,16 +21,44 @@ public class GerenteServicos extends Hotel{
 		
 	}
 	
-	public void atualizarservico(String hospede, Servico novo){
-		pesquisarServico(velho).
+	public boolean removeServico(Servico servico){
+		for (int i = 0; i < super.getContratos().size(); i++) { //pegar todos os contratos
+			for (int j = 0; j < super.getContratos().get(i).getServicos().size(); j++) { //pegar todos os serviços de cada contrato
+				if(super.getContratos().get(i).getServicos().get(j).equals(servico)){
+					super.getContratos().get(i).getServicos().remove(servico);
+					
+			}			
+			}
+			
+		}
+		return false;
+	
+		
 	}
 	
 	
+	// atualiza serivico	
+	public boolean atualizarservico(Servico velho, Servico novo){
+		for (int i = 0; i < super.getContratos().size(); i++) { //pegar todos os contratos
+			for (int j = 0; j < super.getContratos().get(i).getServicos().size(); j++) { //pegar todos os serviços de cada contrato
+				if(super.getContratos().get(i).getServicos().get(j).equals(velho)){
+					super.getContratos().get(i).getServicos().get(j).setDataFinal(novo.getDataFinal());
+					super.getContratos().get(i).getServicos().get(j).setDataInicial(novo.getDataInicial());
+					return true;
+	}
+			}
+		}
+		return false;
+	}
+	
+		
+	
+	//pesquisar servicos 	
 	public Servico pesquisarServico(Servico servico){
 		for (int i = 0; i < super.getContratos().size(); i++) { //pegar todos os contratos
 			for (int j = 0; j < super.getContratos().get(i).getServicos().size(); j++) { //pegar todos os serviços de cada contrato
-				if(super.getContratos().get(i).getServicos().get(i).equals(servico)){
-					return super.getContratos().get(i).getServicos().get(i);
+				if(super.getContratos().get(i).getServicos().get(j).equals(servico)){
+					return super.getContratos().get(i).getServicos().get(j);
 			}			
 			}
 			

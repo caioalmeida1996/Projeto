@@ -2,6 +2,7 @@ package restaurante;
 
 import java.util.Calendar;
 
+import contrato.Contrato;
 import servico.ServicoSuplementar;
 
 /**
@@ -18,8 +19,8 @@ public class Refeicao extends ServicoSuplementar{
 	 * @param dataFinal
 	 * @param valor
 	 */
-	public Refeicao(Calendar dataInicial, Calendar dataFinal, double valor) {
-		super(dataInicial, dataFinal);
+	public Refeicao(Calendar dataInicial, Calendar dataFinal, double valor,Contrato contrato) {
+		super(dataInicial, dataFinal, contrato);
 		this.valor = valor;
 	}
 

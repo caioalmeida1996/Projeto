@@ -27,7 +27,7 @@ public class TestaQuartoExecutivo {
 		dataFinal.set(1973, 8, 7);
 				
 		// Criando um quarto executivo simples com essas datas
-		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO);
+		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO, null);
 		
 		// Assertivas
 		assertTrue(quarto.getDataInicial().equals(dataInicial));
@@ -47,7 +47,7 @@ public class TestaQuartoExecutivo {
 		
 		// Em um quarto executivo simples que foi alugado e entregue no mesmo dia
 		// espera-se que seja cobrado o valor de uma diaria, 360 R$.
-		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.SIM);
+		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.SIM, null);
 		assertTrue(quarto.getCusto() == 360);
 		
 		// Em dois dias de alguel de um quarto executivo simples eh esperado um custo de duas diarias, 720 R$
@@ -66,7 +66,7 @@ public class TestaQuartoExecutivo {
 		
 		// Em um quarto executivo duplo que foi alugado e entregue no mesmo dia
 		// espera-se que seja cobrado o valor de uma diaria, 385 R$.
-		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.DUPLO, TemCamaExtra.NAO);
+		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.DUPLO, TemCamaExtra.NAO, null);
 		assertTrue(quarto.getCusto() == 385);
 		
 		// Em dois dias de alguel de um quarto executivo duplo eh esperado um custo de duas diarias, 770 R$
@@ -85,7 +85,7 @@ public class TestaQuartoExecutivo {
 		
 		// Em um quarto executivo triplo que foi alugado e entregue no mesmo dia
 		// espera-se que seja cobrado o valor de uma diaria, 440 R$.
-		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.TRIPLO, TemCamaExtra.SIM);
+		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.TRIPLO, TemCamaExtra.SIM, null);
 		assertTrue(quarto.getCusto() == 440);
 		
 		// Em dois dias de alguel de um quarto executivo duplo eh esperado um custo de duas diarias, 880 R$
@@ -100,13 +100,13 @@ public class TestaQuartoExecutivo {
 		dataInicial.set(2004, 10, 13);
 		dataFinal.set(2004, 10, 13);
 		
-		QuartoExecutivo quarto1 = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO);
-		QuartoExecutivo quarto2 = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO);
+		QuartoExecutivo quarto1 = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO, null);
+		QuartoExecutivo quarto2 = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO, null);
 		assertTrue(quarto1.equals(quarto1));
 		assertTrue(quarto1.equals(quarto2));
 		assertTrue(quarto2.equals(quarto1));
 		
-		QuartoExecutivo quarto3 = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.TRIPLO, TemCamaExtra.NAO);
+		QuartoExecutivo quarto3 = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.TRIPLO, TemCamaExtra.NAO, null);
 		assertFalse(quarto1.equals(quarto3));
 		assertFalse(quarto3.equals(quarto1));
 		
@@ -115,7 +115,7 @@ public class TestaQuartoExecutivo {
 		outraData1.set(2015, 5, 1);
 		outraData2.set(2015, 5, 13);
 		
-		QuartoExecutivo quarto4 = new QuartoExecutivo(outraData1, outraData2, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO);
+		QuartoExecutivo quarto4 = new QuartoExecutivo(outraData1, outraData2, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO, null);
 		
 		assertFalse(quarto4.equals(quarto1));
 		assertFalse(quarto1.equals(quarto4));
@@ -123,15 +123,15 @@ public class TestaQuartoExecutivo {
 		assertFalse(quarto3.equals(quarto4));
 		assertTrue(quarto4.equals(quarto4));
 		
-		QuartoExecutivo quarto5 = new QuartoExecutivo(outraData1, outraData2, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.SIM);
+		QuartoExecutivo quarto5 = new QuartoExecutivo(outraData1, outraData2, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.SIM, null);
 		assertFalse(quarto5.equals(quarto4));
 		assertFalse(quarto4.equals(quarto5));
 		assertTrue(quarto5.equals(quarto5));
 		
-		QuartoExecutivo quarto6 = new QuartoExecutivo(outraData1, outraData2, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.SIM);
+		QuartoExecutivo quarto6 = new QuartoExecutivo(outraData1, outraData2, TipoQuartoExecutivo.SIMPLES, TemCamaExtra.SIM, null);
 		assertTrue(quarto5.equals(quarto6));
 		assertTrue(quarto6.equals(quarto5));
-		assertFalse(quarto5.equals(new SuitePresidencial(outraData1, outraData2)));
+		assertFalse(quarto5.equals(new SuitePresidencial(outraData1, outraData2, null)));
 		
 	}
 	
@@ -140,7 +140,7 @@ public class TestaQuartoExecutivo {
 		dataInicial.set(2004, 9, 13);
 		dataFinal.set(2004, 9, 14);
 		
-		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.TRIPLO, TemCamaExtra.SIM);
+		QuartoExecutivo quarto = new QuartoExecutivo(dataInicial, dataFinal, TipoQuartoExecutivo.TRIPLO, TemCamaExtra.SIM, null);
 		
 		String mensagem = "Quarto Executivo:\n" +
 				  "Tipo: TRIPLO\n" +

@@ -10,13 +10,13 @@ public class TestaRefeicao {
 
 	@Test
 	public void testaCustos() {
-		Refeicao refeicao = new Refeicao(Calendar.getInstance(), Calendar.getInstance(), 30);
+		Refeicao refeicao = new Refeicao(Calendar.getInstance(), Calendar.getInstance(), 30, null);
 		assertTrue(30 == refeicao.getCusto());
 		
-		Refeicao refeicao2 = new Refeicao(Calendar.getInstance(), Calendar.getInstance(), 40);
+		Refeicao refeicao2 = new Refeicao(Calendar.getInstance(), Calendar.getInstance(), 40, null);
 		assertTrue(40 == refeicao2.getCusto());
 		
-		Refeicao refeicao3 = new Refeicao(Calendar.getInstance(), Calendar.getInstance(), 50);
+		Refeicao refeicao3 = new Refeicao(Calendar.getInstance(), Calendar.getInstance(), 50, null);
 		assertTrue(50 == refeicao3.getCusto());
 	}// fim do metodo
 
@@ -24,7 +24,7 @@ public class TestaRefeicao {
 	public void testaDatas(){
 		Calendar dataInicial = Calendar.getInstance();
 		Calendar dataFinal = Calendar.getInstance();
-		Refeicao refeicao = new Refeicao(dataInicial, dataFinal, 30);
+		Refeicao refeicao = new Refeicao(dataInicial, dataFinal, 30, null);
 		
 		assertTrue(refeicao.getDataInicial().getTime().equals(dataInicial.getTime()));
 		assertTrue(refeicao.getDataFinal().getTime().equals(dataFinal.getTime()));
@@ -36,8 +36,8 @@ public class TestaRefeicao {
 		Calendar dataFinal = Calendar.getInstance();
 		dataFinal.set(2010, 3, 3);
 		
-		Refeicao refeicao1 = new Refeicao(dataInicial, dataFinal, 30);
-		Refeicao refeicao2 = new Refeicao(dataInicial, dataFinal, 30);
+		Refeicao refeicao1 = new Refeicao(dataInicial, dataFinal, 30, null);
+		Refeicao refeicao2 = new Refeicao(dataInicial, dataFinal, 30, null);
 		
 		assertTrue(refeicao1.equals(refeicao1));
 		assertTrue(refeicao1.equals(refeicao2));
@@ -56,7 +56,7 @@ public class TestaRefeicao {
 		dataInicial.set(2015, 2, 2);
 		dataFinal.set(2015, 2, 2);
 		
-		Refeicao refeicao1 = new Refeicao(dataInicial, dataFinal, 30);
+		Refeicao refeicao1 = new Refeicao(dataInicial, dataFinal, 30, null);
 		
 		String mensagem = "Servico de Restaurante:\n" +
 						  "Data Inicial: 2/2/2015\n" +

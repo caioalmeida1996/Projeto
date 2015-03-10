@@ -2,6 +2,7 @@ package babysitter;
 
 import java.util.Calendar;
 
+import contrato.Contrato;
 import servico.ServicoSuplementar;
 
 /**
@@ -21,8 +22,8 @@ public class Babysitter extends ServicoSuplementar{
 	 * @param dataFinal
 	 * 			A data do fim do servico
 	 */
-	public Babysitter(Calendar dataInicial, Calendar dataFinal) {
-		super(dataInicial, dataFinal);
+	public Babysitter(Calendar dataInicial, Calendar dataFinal,Contrato contrato) {
+		super(dataInicial, dataFinal, contrato);
 	}
 
 	/**

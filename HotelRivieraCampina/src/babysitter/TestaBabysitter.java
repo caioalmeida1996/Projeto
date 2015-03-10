@@ -40,7 +40,7 @@ public class TestaBabysitter {
 		assertTrue(data2.get(Calendar.DAY_OF_MONTH) == 13);
 		assertTrue(data2.get(Calendar.HOUR_OF_DAY) == 18);
 		
-		Babysitter b1 = new Babysitter(data1, data2);
+		Babysitter b1 = new Babysitter(data1, data2, null);
 		
 		// Testando o custo do servico de babysitter normal durante todo o horario disponivel (7h às 18h).
 		assertTrue(275 == b1.getCusto());
@@ -60,7 +60,7 @@ public class TestaBabysitter {
 		data2.set(Calendar.DAY_OF_MONTH, 14);
 		data2.set(Calendar.HOUR_OF_DAY, 7);
 		
-		Babysitter b1 = new Babysitter(data1, data2);
+		Babysitter b1 = new Babysitter(data1, data2, null);
 
 		// Testando o custo do servico de babysitter dobrado durante todo o horario disponivel (18h às 7h).
 		assertTrue(650 == b1.getCusto());
@@ -82,7 +82,7 @@ public class TestaBabysitter {
 		data2.set(Calendar.DAY_OF_MONTH, 14);
 		data2.set(Calendar.HOUR_OF_DAY, 12);
 		
-		Babysitter b1 = new Babysitter(data1, data2);
+		Babysitter b1 = new Babysitter(data1, data2, null);
 		
 		// Testando o custo do servico de babysitter durante 24 horas, 11 horas simples mais 13 dobradas.
 		assertTrue(925 == b1.getCusto());
@@ -91,8 +91,8 @@ public class TestaBabysitter {
 
 	@Test
 	public void testaEquals(){
-		Babysitter baby1 = new Babysitter(data1, data2);
-		Babysitter baby2 = new Babysitter(data1, data2);
+		Babysitter baby1 = new Babysitter(data1, data2, null);
+		Babysitter baby2 = new Babysitter(data1, data2, null);
 		
 		assertTrue(baby1.equals(baby1));
 		assertTrue(baby2.equals(baby2));
@@ -108,7 +108,7 @@ public class TestaBabysitter {
 		data4.set(Calendar.DAY_OF_MONTH, 14);
 		data4.set(Calendar.HOUR_OF_DAY, 12);
 		
-		Babysitter baby3 = new Babysitter(data3, data4);
+		Babysitter baby3 = new Babysitter(data3, data4, null);
 		
 		assertTrue(baby3.equals(baby3));
 		assertFalse(baby2.equals(baby3));
@@ -124,7 +124,7 @@ public class TestaBabysitter {
 		data2.set(Calendar.DAY_OF_MONTH, 14);
 		data2.set(Calendar.HOUR_OF_DAY, 12);
 		
-		Babysitter baby = new Babysitter(data1, data2);
+		Babysitter baby = new Babysitter(data1, data2, null);
 		
 		String mensagem = "Servico de Babysitter:\n" +
 						  "Data/hora Iniciais: 13/5/2014, as 12 hs\n" +

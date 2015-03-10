@@ -40,23 +40,22 @@ public class HotelTest {
         
         @Before
         public void testHotel() {
-
-
-                quarto1 = new QuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.DUPLO, TemCamaExtra.SIM);
-                quarto2 = new QuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO);
-                quarto3 = new QuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.DUPLO, TemCamaExtra.SIM);
-
-                endereco1 = new Endereco("br", "pb", "cg", "02", "02");
+        		contrato1 = new Contrato("111111", quarto1);
+        		contrato2 = new Contrato("111111", quarto2);
+        		contrato3 = new Contrato("111111", quarto3);
+        		
+        		endereco1 = new Endereco("br", "pb", "cg", "02", "02");
                 endereco2 = new Endereco("br", "pb", "cg", "02", "02");
                 endereco3 = new Endereco("br", "pb", "cg", "02", "02");
+                
+                hotelTeste.getGerenteHospede().criaHospede("heitor", "2222222", Calendar.getInstance(), endereco1, contrato1);
+                hotelTeste.getGerenteHospede().criaHospede("aqulies", "2222222", Calendar.getInstance(), endereco2, contrato2);
+                hotelTeste.getGerenteHospede().criaHospede("gullo", "2222222", Calendar.getInstance(), endereco3, contrato3);
+        		
 
-                hospede1 = new Hospede("heitor", "2222222", Calendar.getInstance(), endereco1);
-                hospede2 = new Hospede("aqulies", "2222222", Calendar.getInstance(), endereco2);
-                hospede3 = new Hospede("gullo", "2222222", Calendar.getInstance(), endereco3);
-
-                contrato1 = new Contrato(hospede1, "111111", quarto1);
-                contrato2 = new Contrato(hospede2, "111111", quarto2);
-                contrato3 = new Contrato(hospede3, "111111", quarto3);
+                quarto1 = new QuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.DUPLO, TemCamaExtra.SIM, contrato1);
+                quarto2 = new QuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.SIMPLES, TemCamaExtra.NAO, contrato2);
+                quarto3 = new QuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.DUPLO, TemCamaExtra.SIM,contrato3);
 
                 contratos.add(contrato1);
                 contratos.add(contrato2);
@@ -66,7 +65,7 @@ public class HotelTest {
         }
         
         
-        @Test
+        //@Test
         public void testGetContratos() {
                 System.out.println(hotelTeste.getContratos());
                 for (int i = 0; i < hotelTeste.getContratos().size(); i++) {
@@ -78,11 +77,18 @@ public class HotelTest {
         
         @Test
         public void testGerenteHospede(){
-        	 hotelTeste.getGerenteHospede().atualizaHospede("heitor", hospede3);
+        	System.out.println(hotelTeste.getGerenteHospede().getHospedes());
+        	System.out.println(hotelTeste.getGerenteHospede().pesquisaHospede("heitor"));
+        	hotelTeste.getGerenteHospede().atualizaHospede("gullo", hospede2);
+        	System.out.println(hotelTeste.getGerenteHospede().getHospedes());
+        	hotelTeste.getGerenteHospede().removeHospede(hospede3);
+        	System.out.println(hotelTeste.getGerenteHospede().getHospedes());
              System.out.println("-----------------");
              testGetContratos();
              
-             hotelTeste.getGerenteHospede().pesquisaHospede("gullo");
+            // hotelTeste.getGerenteHospede().criaHospede(nome, cpf, dataNascimento, endereco, contrato);
+             
+             
              }
         
 

@@ -10,12 +10,15 @@ import contrato.Contrato;
 public class Hotel {
 
         private List<Contrato> contratos;
+        private GerenteHospede gerenteHospede = new GerenteHospede();
 
 
 
         public Hotel(List<Contrato> contratos) {
                 super();
                 this.contratos = contratos;
+                
+                
         }
 
         //caso de uso 1
@@ -32,7 +35,6 @@ public class Hotel {
         }
 
         public GerenteHospede getGerenteHospede(){
-                GerenteHospede gerenteHospede = new GerenteHospede(contratos);
                 return gerenteHospede;
         }
 
