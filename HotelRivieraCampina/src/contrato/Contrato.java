@@ -49,5 +49,11 @@ public class Contrato {
 	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
 	}
+
+	@Override
+	public String toString() {
+		return "Contrato [numCartao=" + numCartao + "]";
+	}
 		
+	
 }// fim da classe

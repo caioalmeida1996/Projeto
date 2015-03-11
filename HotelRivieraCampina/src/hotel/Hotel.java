@@ -16,22 +16,16 @@ public class Hotel {
         private GerenteContrato gerenteContrato;
 
 
-
         public Hotel() {
         	gerenteHospede = new GerenteHospede(); 
-        	gerenteContrato = new GerenteContrato();
-                
+        	gerenteContrato = new GerenteContrato();                
         }
 
-        //caso de uso 1
-
-
-
-        
-
+  
         public GerenteHospede getGerenteHospede(){        	
                 return gerenteHospede;
         }
+        
 
 		public GerenteServicos getGerenteServico(Contrato contrato1) {
 			gerenteServico = new GerenteServicos(contrato1);
@@ -47,9 +41,9 @@ public class Hotel {
 			return gerenteContrato;
 			
 		}
-		
-		
-        
+
+
+		       
         
 
 }

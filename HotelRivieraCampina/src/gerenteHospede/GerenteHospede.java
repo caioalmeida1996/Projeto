@@ -21,34 +21,51 @@ public class GerenteHospede{
         
         
         
+        
         public List<Hospede> getHospedes(){
         	return hospedes;
         }
         
+        //cria hospede
         public Hospede criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco, Contrato contrato){
         	Hospede hospedeNovo = new Hospede(nome, cpf, dataNascimento, endereco, contrato);
+        	if(contrato.equals(null)){
+        		return hospedeNovo;
+        	}
         	hospedes.add(hospedeNovo);
         	return hospedeNovo;
         }
         
-        public void removeHospede(Hospede hospede){
+        
+        //remove Hospede
+        public void removeHospede(Hospede hospede)throws Exception{
         	hospedes.remove(hospede);
         }
         
-        public void atualizaHospede(String nomeVelho, Hospede hospedeNovo){
-               for (int i = 0; i < hospedes.size(); i++) {
-            	   if (hospedes.get(i).getNome().equals(nomeVelho)) {
-            		   hospedes.get(i).setNome(hospedeNovo.getNome());
-            		   hospedes.get(i).setEndereco(hospedeNovo.getEndereco());
-            		   hospedes.get(i).setDataNascimento(hospedeNovo.getDataNascimento());
-            		   hospedes.get(i).setCpf(hospedeNovo.getCpf());
-					
-				}
+        
+        //atualiza hospede
+        public void atualizaHospede(Hospede hospede,String nome,String cpf,Calendar dataNascimento,Endereco endereco){
+            		if(!nome.equals(null)){
+            			hospede.setNome(nome);
+            		}
+            		if(!endereco.equals(null)){
+            			hospede.setEndereco(endereco);
+            		}
+            		if(!dataNascimento.equals(null)){
+            			hospede.setDataNascimento(dataNascimento);
+            		}
+            		if(!cpf.equals(null)){
+            			   hospede.setCpf(cpf);
+            		}
+            		  					
 				
-			}
+				
+			
 
         }
-
+        
+        
+        // pesquisar hospede
         public Hospede pesquisaHospede(String nome) {
         	for (int i = 0; i < hospedes.size(); i++) {
          	   if (hospedes.get(i).getNome().equals(nome)) {

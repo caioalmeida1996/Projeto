@@ -33,10 +33,9 @@ public class GerenteContrato {
 	
 	
 	// atualizar
-	public Contrato atualizarContrato(String numCartao, Contrato contratoNovo){
-		Contrato contratovelho = pesquisaContrato(numCartao);
-		contratovelho.setNumCartao(contratoNovo.getNumCartao());
-		return contratovelho;
+	public Contrato atualizarContrato(Contrato contrato,String numCartao ){
+		contrato.setNumCartao(numCartao);
+		return contrato;
 		
 	}
 	
