@@ -1,6 +1,8 @@
 package hotel;
 
+import gerenteContrato.GerenteContrato;
 import gerenteHospede.GerenteHospede;
+import gerenteServicos.GerenteServicos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,16 +10,16 @@ import java.util.List;
 import contrato.Contrato;
 
 public class Hotel {
+	
+        private GerenteHospede gerenteHospede;
+        private GerenteServicos gerenteServico;
+        private GerenteContrato gerenteContrato;
 
-        private List<Contrato> contratos;
-        private GerenteHospede gerenteHospede = new GerenteHospede();
 
 
-
-        public Hotel(List<Contrato> contratos) {
-                super();
-                this.contratos = contratos;
-                
+        public Hotel() {
+        	gerenteHospede = new GerenteHospede(); 
+        	gerenteContrato = new GerenteContrato();
                 
         }
 
@@ -25,17 +27,29 @@ public class Hotel {
 
 
 
+        
 
-        public List<Contrato> getContratos() {
-                return contratos;
-        }
-
-        public void setContratos(List<Contrato> contratos) {
-                this.contratos = contratos;
-        }
-
-        public GerenteHospede getGerenteHospede(){
+        public GerenteHospede getGerenteHospede(){        	
                 return gerenteHospede;
         }
+
+		public GerenteServicos getGerenteServico(Contrato contrato1) {
+			gerenteServico = new GerenteServicos(contrato1);
+			return gerenteServico;
+		}
+		
+		public GerenteServicos getGerenteServico() {
+			gerenteServico = new GerenteServicos();
+			return gerenteServico;
+		}
+
+		public GerenteContrato getGerenteContrato() {
+			return gerenteContrato;
+			
+		}
+		
+		
+        
+        
 
 }

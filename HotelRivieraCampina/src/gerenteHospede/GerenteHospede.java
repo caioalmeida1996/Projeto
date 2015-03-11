@@ -1,5 +1,6 @@
 package gerenteHospede;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class GerenteHospede{
 
 
         public GerenteHospede() {
+        	hospedes = new ArrayList<Hospede>();
         	
         }
         
@@ -23,9 +25,10 @@ public class GerenteHospede{
         	return hospedes;
         }
         
-        public void criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco, Contrato contrato){
+        public Hospede criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco, Contrato contrato){
         	Hospede hospedeNovo = new Hospede(nome, cpf, dataNascimento, endereco, contrato);
         	hospedes.add(hospedeNovo);
+        	return hospedeNovo;
         }
         
         public void removeHospede(Hospede hospede){

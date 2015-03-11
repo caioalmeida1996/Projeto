@@ -1,6 +1,7 @@
 package contrato;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import quarto.Quarto;
 import hospede.Hospede;
@@ -15,14 +16,13 @@ public class Contrato {
 
 	//private Hospede hospede;
 	private String numCartao;
-	private Quarto quarto;
-	private ArrayList<ServicoSuplementar> servicos;
+	private List<Servico> servicos;
 	
-	public Contrato(String numCartao, Quarto quarto) {
+	public Contrato(String numCartao) {
 		super();
 		//this.hospede = hospede;
 		this.numCartao = numCartao;
-		this.quarto = quarto;
+		servicos = new ArrayList<Servico>();
 	}
 
 	/*public Hospede getHospede() {
@@ -41,19 +41,12 @@ public class Contrato {
 		this.numCartao = numCartao;
 	}
 
-	public Quarto getQuarto() {
-		return quarto;
-	}
 
-	public void setQuarto(Quarto quarto) {
-		this.quarto = quarto;
-	}
-
-	public ArrayList<ServicoSuplementar> getServicos() {
+	public List<Servico> getServicos() {
 		return servicos;
 	}
 
-	public void setServicos(ArrayList<ServicoSuplementar> servicos) {
+	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
 	}
 		
