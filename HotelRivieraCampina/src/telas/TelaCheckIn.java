@@ -1,5 +1,6 @@
 package telas;
 
+import gerenteHospede.GerenteHospede;
 import hospede.Hospede;
 import hotel.Hotel;
 
@@ -31,6 +32,10 @@ import java.util.Calendar;
 
 
 
+
+
+
+
 import contrato.Contrato;
 
 import javax.swing.JComboBox;
@@ -40,7 +45,10 @@ import javax.swing.text.MaskFormatter;
 import endereco.Endereco;
 import quarto.Quarto;
 import quartoExecutivo.QuartoExecutivo;
+import quartoExecutivo.TemCamaExtra;
+import quartoExecutivo.TipoQuartoExecutivo;
 import quartoLuxo.QuartoLuxo;
+import quartoLuxo.TipoQuartoLuxo;
 import suitePresidencial.SuitePresidencial;
 import servico.Servico;
 
@@ -48,6 +56,7 @@ public class TelaCheckIn extends JFrame {
 
 	Color corFundo = new Color(244, 246, 245); 
 	Color corBotao = new Color(68, 133, 244);
+	private GerenteHospede gh = new GerenteHospede();
 	private static final long serialVersionUID = 1L;
 	private JTextField tfNome;
 	private JTextField tfCPF;
@@ -60,49 +69,45 @@ public class TelaCheckIn extends JFrame {
 	private JTextField tfDataEntrada;
 	private JTextField tfDataSaida;
 	private JComboBox<String> comboBoxTipoDeQuarto = new JComboBox<String>();
-	private JRadioButton RadioButtonCamaExtra = new JRadioButton("Cama extra");
+	private JRadioButton rbCamaExtra = new JRadioButton("Cama extra");
 	private static ArrayList<Servico> servicos = new ArrayList<Servico>(); 
 	private Quarto quarto;
 	private Contrato contrato;
-	private JTextField tfEstado;
+	private JTextField tfEstado;	
 	private JTextField tfCidade;
 	private JTextField tfRua;
 	private JTextField tfNumero;
 	private Hospede hospede;
 	
 	
-	
-	
-
-	/**
-	 * Launch the application.
-	 */
-
 	/**
 	 * Create the frame.
 	 */
-	public TelaCheckIn(final Hotel hotel) {
+	public TelaCheckIn() {
 		setTitle("Check In");
 		
-		setBounds(420, 230, 648, 430);
+		setBounds(300, 120, 648, 430);
 
 		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setForeground(Color.DARK_GRAY);
 		lblNome.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		lblNome.setBounds(10, 53, 113, 14);
 
 		tfNome = new JTextField();
 		tfNome.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
-		tfNome.setBounds(80, 47, 169, 20);
+		tfNome.setBounds(106, 47, 169, 20);
 		tfNome.setColumns(10);
 		tfNome.setBorder(null);
 
 		// Criando jCalendar
 
 		JLabel lblCpf = new JLabel("CPF:");
+		lblCpf.setForeground(Color.DARK_GRAY);
 		lblCpf.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		lblCpf.setBounds(10, 79, 113, 14);
 
 		JLabel lblDataDeNascimento = new JLabel("Nascimento:");
+		lblDataDeNascimento.setForeground(Color.DARK_GRAY);
 		lblDataDeNascimento.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		lblDataDeNascimento.setBounds(10, 104, 113, 14);
 
@@ -125,14 +130,14 @@ public class TelaCheckIn extends JFrame {
 		tfCPF = new JFormattedTextField(format_1);
 		tfCPF.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		tfCPF.setText("( ) - ");
-		tfCPF.setBounds(80, 73, 169, 20);
+		tfCPF.setBounds(106, 73, 169, 20);
 		getContentPane().add(tfCPF);
 		tfCPF.setColumns(10);
 		tfCPF.setBorder(null);
 
 		tfDataDeNascimento = new JTextField();
 		tfDataDeNascimento.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		tfDataDeNascimento.setBounds(80, 98, 169, 20);
+		tfDataDeNascimento.setBounds(106, 98, 169, 20);
 		tfDataDeNascimento.setColumns(10);
 		tfDataDeNascimento.setBorder(null);
 
@@ -165,17 +170,19 @@ public class TelaCheckIn extends JFrame {
 			}
 		});
 
-		JLabel lblEndereco = new JLabel("Endereco:");
-		lblEndereco.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		lblEndereco.setBounds(394, 22, 113, 14);
+		JLabel lblEndereco = new JLabel("Endereco");
+		lblEndereco.setForeground(Color.GRAY);
+		lblEndereco.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		lblEndereco.setBounds(320, 17, 113, 19);
 
 		JLabel lblN = new JLabel("Cartao de Credito:");
+		lblN.setForeground(Color.DARK_GRAY);
 		lblN.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		lblN.setBounds(10, 129, 113, 14);
 
 		tfPais = new JTextField();
 		tfPais.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		tfPais.setBounds(393, 47, 169, 20);
+		tfPais.setBounds(393, 47, 200, 20);
 		tfPais.setColumns(10);
 		tfPais.setBorder(null);
 
@@ -205,18 +212,21 @@ public class TelaCheckIn extends JFrame {
 		tfCartaoDeCredito.setBorder(null);
 
 		JLabel lblQuarto = new JLabel("Quarto:");
+		lblQuarto.setForeground(Color.DARK_GRAY);
 		lblQuarto.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		lblQuarto.setBounds(20, 195, 55, 14);
-		RadioButtonCamaExtra.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		lblQuarto.setBounds(20, 231, 55, 14);
+		rbCamaExtra.setForeground(Color.DARK_GRAY);
+		rbCamaExtra.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 
 		
-		RadioButtonCamaExtra.setBounds(20, 247, 111, 23);
+		rbCamaExtra.setBounds(20, 277, 111, 23);
 
 		JLabel label = new JLabel("N\u00BA de pessoas");
+		label.setForeground(Color.DARK_GRAY);
 		label.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		label.setBounds(20, 223, 88, 14);
+		label.setBounds(20, 256, 88, 14);
 
-		comboBoxTipoDeQuarto.setBounds(68, 192, 105, 20);
+		comboBoxTipoDeQuarto.setBounds(66, 225, 105, 20);
 		comboBoxTipoDeQuarto.addItem("Presidencial");
 		comboBoxTipoDeQuarto.addItem("Luxo Simples");
 		comboBoxTipoDeQuarto.addItem("Luxo Duplo");
@@ -226,12 +236,14 @@ public class TelaCheckIn extends JFrame {
 		comboBoxTipoDeQuarto.addItem("Executivo Triplo");
 
 		JLabel label_1 = new JLabel("Data de Entrada");
+		label_1.setForeground(Color.DARK_GRAY);
 		label_1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		label_1.setBounds(247, 192, 94, 14);
+		label_1.setBounds(225, 231, 94, 14);
 
 		JLabel label_5 = new JLabel("Data de Saida");
+		label_5.setForeground(Color.DARK_GRAY);
 		label_5.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		label_5.setBounds(393, 192, 86, 14);
+		label_5.setBounds(349, 231, 86, 14);
 //		JDateChooser entradaJdate = new JDateChooser();
 //		entradaJdate.getCalendarButton().addActionListener(
 				new ActionListener() {
@@ -252,14 +264,14 @@ public class TelaCheckIn extends JFrame {
 		getContentPane().add(tfNome);
 		getContentPane().add(tfCPF);
 		getContentPane().add(tfDataDeNascimento);
-		getContentPane().add(RadioButtonCamaExtra);
+		getContentPane().add(rbCamaExtra);
 		getContentPane().add(lblEndereco);
 		getContentPane().add(tfPais);
 		getContentPane().add(lblN);
 		getContentPane().add(tfCartaoDeCredito);
 
 		JComboBox<String> comboBoxNdePessoas = new JComboBox<String>();
-		comboBoxNdePessoas.setBounds(118, 220, 53, 20);
+		comboBoxNdePessoas.setBounds(118, 250, 53, 20);
 		getContentPane().add(comboBoxNdePessoas);
 
 		JButton btnSalvar = new JButton("Salvar");
@@ -267,7 +279,6 @@ public class TelaCheckIn extends JFrame {
 		btnSalvar.setForeground(Color.WHITE);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				Endereco endereco = new Endereco(tfPais.getText(), tfEstado.getText(), tfCidade.getText(), tfRua.getText(), tfNumero.getText());
 				
 				temErro();
@@ -297,24 +308,27 @@ public class TelaCheckIn extends JFrame {
 						e.printStackTrace();
 					}
 					//CRIA O OBJETO HOSPEDE----------------------------------------------------------
-					hospede = hotel.getGerenteHospede().criaHospede(tfNome.getText(), tfCPF.getText(), calHospede, endereco);
-					contrato = hotel.getGerenteContrato().Checkin(calEntrada, calSaida, hospede, tfCartaoDeCredito.getText());
 					
+					hospede = TelaPrincipal.hotel.getGerenteHospede().criaHospede(tfNome.getText(), tfCPF.getText(), calHospede, endereco);
+					contrato = TelaPrincipal.hotel.getGerenteContrato().Checkin(calEntrada, calSaida, hospede, tfCartaoDeCredito.getText());
 					
 					String itemSelecionado = comboBoxTipoDeQuarto.getSelectedItem().toString();
-//					criaQuartos(calEntrada, calSaida, hospede, itemSelecionado);
-//					servicos.add(quarto);
-//					contrato = new Contrato(hospede, calEntrada, calSaida, servicos);
-//					JOptionPane.showMessageDialog(null,"Cadastro feito");
-//					TelaPrincipal.hotel.adicionaContrato(contrato);
-//					JOptionPane.showMessageDialog(null,"Hospede: " + hospede.getNome());
-//					hide();
-//					break;
+					criaQuartos(calEntrada, calSaida, hospede, itemSelecionado);
+					try {
+						TelaPrincipal.hotel.getGerenteServico(contrato).adiconarServico(quarto);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					JOptionPane.showMessageDialog(null,"Cadastro feito");
+					JOptionPane.showMessageDialog(null,"Hospede: " + hospede.getNome());
+					hide();
+					break;
 				}
 			}
 
 		});
-		btnSalvar.setBounds(10, 332, 161, 50);
+		btnSalvar.setBounds(20, 341, 161, 41);
 		getContentPane().add(btnSalvar);
 		btnSalvar.setBorder(null);
 		btnSalvar.setBackground(corBotao);
@@ -330,60 +344,82 @@ public class TelaCheckIn extends JFrame {
 				hide();
 			}
 		});
-		btnFechar.setBounds(377, 332, 169, 50);
+		btnFechar.setBounds(225, 341, 161, 41);
 		getContentPane().add(btnFechar);
 
 		tfDataEntrada = new JTextField();
-		tfDataEntrada.setBounds(252, 221, 114, 19);
+		tfDataEntrada.setBounds(225, 251, 114, 19);
 		getContentPane().add(tfDataEntrada);
 		tfDataEntrada.setColumns(10);
 		tfDataEntrada.setBorder(null);
 
 		tfDataSaida = new JTextField();
-		tfDataSaida.setBounds(393, 221, 114, 19);
+		tfDataSaida.setBounds(349, 251, 114, 19);
 		getContentPane().add(tfDataSaida);
 		tfDataSaida.setColumns(10);
 		tfDataSaida.setBorder(null);
 		
 		JLabel lblPais = new JLabel("Pais:");
+		lblPais.setForeground(Color.DARK_GRAY);
 		lblPais.setBounds(320, 53, 46, 14);
 		getContentPane().add(lblPais);
 		
 		JLabel lblEstado = new JLabel("Estado:");
+		lblEstado.setForeground(Color.DARK_GRAY);
 		lblEstado.setBounds(320, 79, 46, 14);
 		getContentPane().add(lblEstado);
 		
 		JLabel lblCidade = new JLabel("Cidade:");
+		lblCidade.setForeground(Color.DARK_GRAY);
 		lblCidade.setBounds(320, 104, 46, 14);
 		getContentPane().add(lblCidade);
 		
 		JLabel lblRua = new JLabel("Rua:");
+		lblRua.setForeground(Color.DARK_GRAY);
 		lblRua.setBounds(320, 129, 46, 14);
 		getContentPane().add(lblRua);
 		
 		JLabel lblNumero = new JLabel("Numero:");
+		lblNumero.setForeground(Color.DARK_GRAY);
 		lblNumero.setBounds(320, 155, 46, 14);
 		getContentPane().add(lblNumero);
 		
 		tfEstado = new JTextField();
-		tfEstado.setBounds(393, 73, 169, 20);
+		tfEstado.setBounds(393, 73, 200, 20);
 		getContentPane().add(tfEstado);
 		tfEstado.setColumns(10);
+		tfEstado.setBorder(null);
 		
 		tfCidade = new JTextField();
 		tfCidade.setBounds(393, 98, 200, 20);
 		getContentPane().add(tfCidade);
 		tfCidade.setColumns(10);
+		tfCidade.setBorder(null);
 		
 		tfRua = new JTextField();
 		tfRua.setBounds(393, 123, 200, 20);
 		getContentPane().add(tfRua);
 		tfRua.setColumns(10);
+		tfRua.setBorder(null);
 		
 		tfNumero = new JTextField();
 		tfNumero.setBounds(393, 149, 200, 20);
 		getContentPane().add(tfNumero);
 		tfNumero.setColumns(10);
+		tfNumero.setBorder(null);
+		
+		JLabel lblDados = new JLabel("Dados");
+		lblDados.setForeground(Color.GRAY);
+		lblDados.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		lblDados.setBounds(10, 17, 113, 19);
+		getContentPane().add(lblDados);
+		
+		JLabel lblDadosContratuais = new JLabel("Dados Contratuais");
+		lblDadosContratuais.setForeground(Color.GRAY);
+		lblDadosContratuais.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		lblDadosContratuais.setBounds(20, 183, 230, 31);
+		getContentPane().add(lblDadosContratuais);
+		
 		comboBoxNdePessoas.addItem("1");
 		comboBoxNdePessoas.addItem("2");
 		comboBoxNdePessoas.addItem("3");
@@ -398,66 +434,75 @@ public class TelaCheckIn extends JFrame {
 //		}
 
 	}
-//	public void criaQuartos(Calendar calEntrada, Calendar calSaida, Hospede hospede, String itemSelecionado){
-//		switch (itemSelecionado) {
-//		case "Presidencial":
-//			try {
-//				quarto = new SuitePresidencial(calEntrada, calSaida, hospede.getNome());
-//			} catch (Exception e) {
-//				JOptionPane.showMessageDialog(null, e.getMessage());
-//			}
-//			break;
-//			
-//		case "Executivo Simples":
-//			try {
-//				quarto = new QuartoExecutivo("simples", calEntrada, calSaida, hospede.getNome(), RadioButtonCamaExtra.isSelected());				
-//			} catch (Exception e){
-//				JOptionPane.showMessageDialog(null, e.getMessage());
-//			}
-//		
-//			break;
-//		
-//		case "Executivo Duplo":
-//			try {
-//				quarto = new QuartoExecutivo("duplo", calEntrada, calSaida, hospede.getNome(), RadioButtonCamaExtra.isSelected());
-//			} catch (Exception e){
-//				JOptionPane.showMessageDialog(null, e.getMessage());
-//			}
-//			break;
-//		
-//		case "Executivo Triplo":
-//			try {
-//				quarto = new QuartoExecutivo("triplo", calEntrada, calSaida, hospede.getNome(), RadioButtonCamaExtra.isSelected());
-//			} catch (Exception e){
-//				JOptionPane.showMessageDialog(null, e.getMessage());
-//			}
-//			break;
-//		
-//		case "Luxo Simples":
-//			try {
-//				quarto = new QuartoLuxo("simples", calEntrada, calSaida, hospede.getNome(), RadioButtonCamaExtra.isSelected());
-//			} catch (Exception e){
-//				JOptionPane.showMessageDialog(null, e.getMessage());
-//			}
-//			break;
-//		
-//		case "Luxo Duplo":
-//			try {
-//				quarto = new QuartoLuxo("duplo", calEntrada, calSaida, hospede.getNome(), RadioButtonCamaExtra.isSelected());
-//			} catch (Exception e){
-//				JOptionPane.showMessageDialog(null, e.getMessage());
-//			}
-//			break;
-//		
-//		case "Luxo Triplo":
-//			try {
-//				quarto = new QuartoLuxo("triplo", calEntrada, calSaida, hospede.getNome(), RadioButtonCamaExtra.isSelected());
-//			} catch (Exception e){
-//				JOptionPane.showMessageDialog(null, e.getMessage());
-//			}
-//			break;
-//		}
-//	}
+	
+	public TemCamaExtra checaTemCamaExtra(){
+		if (rbCamaExtra.isSelected()){
+			return TemCamaExtra.SIM;
+		}
+		return TemCamaExtra.NAO;
+	}
+	
+	public void criaQuartos(Calendar calEntrada, Calendar calSaida, Hospede hospede, String itemSelecionado){
+		switch (itemSelecionado) {
+		case "Presidencial":
+			try {
+				quarto = TelaPrincipal.hotel.getGerenteServico().criaServicoQuartoPresidencial(calEntrada, calSaida);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+			break;
+			
+		case "Executivo Simples":
+			try {
+				quarto = TelaPrincipal.hotel.getGerenteServico().criaServicoQuartoExecutivo(calEntrada, calSaida, TipoQuartoExecutivo.SIMPLES, checaTemCamaExtra());	
+			} catch (Exception e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		
+			break;
+		
+		case "Executivo Duplo":
+			try {
+				quarto = TelaPrincipal.hotel.getGerenteServico().criaServicoQuartoExecutivo(calEntrada, calSaida, TipoQuartoExecutivo.DUPLO, checaTemCamaExtra());
+			} catch (Exception e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+			break;
+		
+		case "Executivo Triplo":
+			try {
+				quarto = TelaPrincipal.hotel.getGerenteServico().criaServicoQuartoExecutivo(calEntrada, calEntrada, TipoQuartoExecutivo.TRIPLO, checaTemCamaExtra());
+			} catch (Exception e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+			break;
+		
+		case "Luxo Simples":
+			try {
+				TelaPrincipal.hotel.getGerenteServico().criaServicoQuartoLuxo(calEntrada, calSaida, TipoQuartoLuxo.SIMPLES, checaTemCamaExtra());
+			} catch (Exception e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+			break;
+		
+		case "Luxo Duplo":
+			try {
+				TelaPrincipal.hotel.getGerenteServico().criaServicoQuartoLuxo(calEntrada, calSaida, TipoQuartoLuxo.DUPLO, checaTemCamaExtra());
+			} catch (Exception e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+			break;
+		
+		case "Luxo Triplo":
+			try {
+				TelaPrincipal.hotel.getGerenteServico().criaServicoQuartoLuxo(calEntrada, calSaida, TipoQuartoLuxo.TRIPLO, checaTemCamaExtra());
+			} catch (Exception e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+			break;
+		}
+	}
+	
 	public boolean temErro(){
 		boolean teveErro = false;
 		if (tfDataDeNascimento.getText().length() != 10 || tfDataEntrada.getText().length() != 10 || tfDataSaida.getText().length() != 10) {

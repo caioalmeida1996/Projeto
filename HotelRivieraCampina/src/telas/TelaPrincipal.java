@@ -19,14 +19,14 @@ public class TelaPrincipal extends JFrame {
 	
 	Color corFundo = new Color(244, 246, 245); 
 	Color corBotao = new Color(68, 133, 244);
-	private Hotel hotel = new Hotel();
+	static Hotel hotel = new Hotel();
 	private JPanel contentPane;
 
 	public TelaPrincipal() {
 		
 		setTitle("Hotel Riviera Campina");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(420, 230, 450, 300);
+		setBounds(100, 100, 450, 102);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -40,27 +40,30 @@ public class TelaPrincipal extends JFrame {
 
 		btnCheckIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCheckIn TH = new TelaCheckIn(hotel);
+				TelaCheckIn TH = new TelaCheckIn();
 				TH.show();
 			}
 		});
-		btnCheckIn.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		btnCheckIn.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
 		btnCheckIn.setBounds(10, 21, 139, 23);
 		contentPane.add(btnCheckIn);
 		
-		JButton btnServio = new JButton("Servi\u00E7o");
-		btnServio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				telaServico TS = new telaServico();
-				TS.show();
+		JButton btnHospedes = new JButton("Hospedes");
+		btnHospedes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaHospedes TH = new TelaHospedes();
+				TH.show();
 			}
 		});
-		btnServio.setBounds(10, 55, 139, 23);
-		btnServio.setForeground(Color.WHITE);
-		btnServio.setBorder(null);
-		btnServio.setBackground(corBotao);
-		btnServio.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
-		contentPane.add(btnServio);
+		btnHospedes.setForeground(Color.WHITE);
+		btnHospedes.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
+		btnHospedes.setBounds(176, 21, 139, 23);
+		contentPane.add(btnHospedes);
+		btnHospedes.setBorder(null);
+		btnHospedes.setBackground(corBotao);
 	}
-
+	
+	public Hotel getHotel(){
+		return hotel;
+	}
 }

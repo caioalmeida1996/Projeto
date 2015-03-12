@@ -35,7 +35,7 @@ public class MainLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfLogin;
-	private JTextField tfSenha;
+	private JPasswordField pfSenha;
 
 	/**
 	 * Launch the application.
@@ -59,7 +59,7 @@ public class MainLogin extends JFrame {
 	public MainLogin() {
 		setTitle("Hotel Riviera Campina");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(420, 230, 450, 204);
+		setBounds(100, 100, 450, 204);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -80,17 +80,10 @@ public class MainLogin extends JFrame {
 		
 		tfLogin = new JTextField();
 		tfLogin.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
-		tfLogin.setBounds(151, 23, 200, 29);
+		tfLogin.setBounds(151, 24, 200, 29);
 		contentPane.add(tfLogin);
 		tfLogin.setColumns(10);
 		tfLogin.setBorder(null);
-		
-		tfSenha = new JTextField();
-		tfSenha.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
-		tfSenha.setBounds(151, 65, 200, 29);
-		contentPane.add(tfSenha);
-		tfSenha.setColumns(10);
-		tfSenha.setBorder(null);
 		
 		Color corFundo = new Color(244, 246, 245); 
 		Color corBotao = new Color(68, 133, 244);
@@ -102,7 +95,7 @@ public class MainLogin extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (tfLogin.getText().equals("admin")
-						&& tfSenha.getText().equals("admin")) {
+						&& pfSenha.getText().equals("admin")) {
 					TelaPrincipal TP = new TelaPrincipal();
 					TP.show();
 					hide();
@@ -111,7 +104,7 @@ public class MainLogin extends JFrame {
 					JOptionPane.showMessageDialog(null, "Acesso Negado");
 				{
 					tfLogin.setText("");
-					tfSenha.setText("");
+					pfSenha.setText("");
 				}
 			}
 		});
@@ -128,7 +121,7 @@ public class MainLogin extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				tfLogin.setText("");
-				tfSenha.setText("");
+				pfSenha.setText("");
 			}
 		});
 		
@@ -139,23 +132,10 @@ public class MainLogin extends JFrame {
 		btnCancelar.setBounds(215, 126, 194, 29);
 		contentPane.add(btnCancelar);
 		
-//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//		double width = screenSize.getWidth();
-//		double height = screenSize.getHeight();
-//		
-//		if (getContentPane().getWidth() == width && getContentPane().getHeight() == height){
-//			getContentPane().setLayout(new GridBagLayout());
-//		}
-		
-//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//		double width = screenSize.getWidth();
-//		double height = screenSize.getHeight();
-//
-//		System.out.println(width);
-//		System.out.println(height);
-//		System.out.println(getContentPane().getWidth());
-//		System.out.println(getContentPane().getHeight());
+		pfSenha = new JPasswordField();
+		pfSenha.setBounds(151, 68, 200, 29);
+		contentPane.add(pfSenha);
+		pfSenha.setBorder(null);
 		
 	}
-
 }
