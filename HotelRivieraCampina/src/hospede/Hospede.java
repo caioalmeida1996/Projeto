@@ -1,6 +1,7 @@
 package hospede;
 
 import java.util.Calendar;
+
 import endereco.Endereco;;
 
 /**
@@ -10,9 +11,11 @@ import endereco.Endereco;;
  */
 public class Hospede {
 
+	private String numCartao;
 	private String nome, cpf;
 	private Calendar dataNascimento;
 	private Endereco endereco;
+
 
 	
 	/**
@@ -26,12 +29,13 @@ public class Hospede {
 	 * @param endereco
 	 * 			endereco do hospede
 	 */
-	public Hospede(String nome, String cpf, Calendar dataNascimento, Endereco endereco) {
+	public Hospede(String nome, String cpf, Calendar dataNascimento, Endereco endereco,String numCartao) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;
+		this.numCartao = numCartao;
 	}
 
 	/**
@@ -101,6 +105,23 @@ public class Hospede {
 		this.endereco = endereco;
 	}
 	
+	/**
+	 * 
+	 * @return numero do carato
+	 * 			o numero do cartao de creditos do hospede
+	 */
+	public String getNumCartao() {
+		return numCartao;
+	}
+	
+	/**
+	 * 
+	 * @param numCartao novo numero do cartao de creditos
+	 */
+	public void setNumCartao(String numCartao) {
+		this.numCartao = numCartao;
+	}
+	
 
 	@Override
 	public boolean equals(Object objeto) {
@@ -111,7 +132,8 @@ public class Hospede {
 		return this.getNome().equals(hospede.getNome()) &&
 				this.getCpf().equals(hospede.getCpf()) &&
 				this.IsDatasIguais(hospede) &&
-				this.getEndereco().equals(hospede.getEndereco());
+				this.getEndereco().equals(hospede.getEndereco()) &&
+				this.getNumCartao().equals(hospede.getNumCartao());
 	}// fim do equals
 	
 	/**

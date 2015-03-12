@@ -2,8 +2,11 @@ package aluguelCarros;
 
 import java.util.Calendar;
 
-import contrato.Contrato;
 import servico.ServicoSuplementar;
+import contrato.Contrato;
+import aluguelCarros.TemTanqueCheio;
+import aluguelCarros.TemSeguro;
+import aluguelCarros.TipoCarro;
 
 /**
  * Classe Aluguel de Carro
@@ -197,18 +200,6 @@ public class AluguelCarro extends ServicoSuplementar{
 	
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

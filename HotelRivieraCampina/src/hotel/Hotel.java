@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import contrato.Contrato;
-
+ 
 public class Hotel {
 	
         private GerenteHospede gerenteHospede;

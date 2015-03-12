@@ -137,6 +137,5 @@ public class MainLogin extends JFrame {
 		contentPane.add(pfSenha);
 		pfSenha.setBorder(null);
 		
-		
 	}
 }

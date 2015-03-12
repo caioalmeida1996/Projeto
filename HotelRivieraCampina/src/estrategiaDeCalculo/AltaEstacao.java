@@ -9,7 +9,7 @@ public class AltaEstacao implements Tarifacao{
 
 	@Override
 	public double getPreco(double valor) {
-		return valor * 2;
+		return valor * 1.5;
 	}
 
 }

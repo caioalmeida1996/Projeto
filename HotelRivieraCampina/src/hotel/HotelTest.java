@@ -22,6 +22,9 @@ import quartoLuxo.TipoQuartoLuxo;
 import servico.Servico;
 import contrato.Contrato;
 import endereco.Endereco;
+import estrategiaDeCalculo.AltaEstacao;
+import estrategiaDeCalculo.BaixaEstacao;
+import estrategiaDeCalculo.Tarifacao;
 
 public class HotelTest {
         private Hotel hotelTeste;
@@ -42,12 +45,22 @@ public class HotelTest {
         private Quarto quarto2;
         private Quarto quarto3;
         
+        private Tarifacao tarifa;
         
         @Test
         public void testHotel() throws Exception {
       
-
+        	
             hotelTeste = new Hotel();  //cria um hotel
+            
+            tarifa = new AltaEstacao(); {
+				
+            
+            
+          //cria endereço	
+        	endereco1 = new Endereco("br", "pb", "cg", "02", "02");
+            endereco2 = new Endereco("br", "pb", "cg", "02", "02");
+            endereco3 = new Endereco("br", "pb", "cg", "02", "02");
             
             //cria 3 hospedes
             hospede1 = hotelTeste.getGerenteHospede().criaHospede("heitor", "2222222", Calendar.getInstance(), endereco1);
@@ -55,9 +68,9 @@ public class HotelTest {
             hospede3 = hotelTeste.getGerenteHospede().criaHospede("gullo", "2222222", Calendar.getInstance(), endereco3);
         		
             //cria 3 contratos
-            contrato1 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede1, "1111111");
-            contrato2 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede2, "2222222");
-            contrato3 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede3, "3333333");
+            contrato1 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede1, "1111111", tarifa);
+            contrato2 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede2, "2222222", tarifa);
+            contrato3 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede3, "3333333", tarifa);
         	
         	//cria quartos
             //OBS: hotelTeste.getGerenteServico().cria.. -- cria objetos avulsos que seram usados para pesquisar 
@@ -72,18 +85,20 @@ public class HotelTest {
 			hotelTeste.getGerenteServico(contrato3).adiconarServico(quarto3);
 			
         	
-        	//cria endereço	
-        	endereco1 = new Endereco("br", "pb", "cg", "02", "02");
-            endereco2 = new Endereco("br", "pb", "cg", "02", "02");
-            endereco3 = new Endereco("br", "pb", "cg", "02", "02");
+        	
             
             
             hotelTeste.getGerenteServico(contrato1).criaServicoQuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.SIMPLES,TemCamaExtra.SIM );
             hotelTeste.getGerenteServico(contrato1).criaServicoSuplementarAluguelCarros(Calendar.getInstance(), Calendar.getInstance(), "asd123", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO);
             hotelTeste.getGerenteServico(contrato1).criaServicoSuplementarRestaurante(Calendar.getInstance(), Calendar.getInstance(), 100);
             
+            System.out.println(hotelTeste.getGerenteHospede().getHospedes());
+            System.out.println(hotelTeste.getGerenteServico(contrato1).getServicos());
+            System.out.println(hotelTeste.getGerenteContrato().getContratos());
+            
             System.out.println(hotelTeste.getGerenteContrato().checkout(contrato1).getFatura());
             System.out.println("preco total: " + hotelTeste.getGerenteContrato().checkout(contrato1).getCusto());
+            }
             
         
               

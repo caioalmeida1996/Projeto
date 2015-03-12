@@ -6,7 +6,7 @@ import contrato.Contrato;
 import servico.ServicoSuplementar;
 
 /**
- * Classe Babysitter
+ * Classe Babysitter 
  * 
  * @author Akylles.
  *

@@ -25,8 +25,8 @@ public class GerenteHospede{
         }
         
         //cria hospede
-        public Hospede criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco){
-        	Hospede hospedeNovo = new Hospede(nome, cpf, dataNascimento, endereco);
+        public Hospede criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco, String numCartao){
+        	Hospede hospedeNovo = new Hospede(nome, cpf, dataNascimento, endereco, numCartao);
         	hospedes.add(hospedeNovo);
         	return hospedeNovo;
         }
@@ -39,7 +39,7 @@ public class GerenteHospede{
         
         
         //atualiza hospede
-        public void atualizaHospede(Hospede hospede,String nome,String cpf,Calendar dataNascimento,Endereco endereco){
+        public void atualizaHospede(Hospede hospede,String nome,String cpf,Calendar dataNascimento,Endereco endereco, String numCartao){
             		if(!nome.equals(null)){
             			hospede.setNome(nome);
             		}
@@ -51,6 +51,9 @@ public class GerenteHospede{
             		}
             		if(!cpf.equals(null)){
             			   hospede.setCpf(cpf);
+            		}
+            		if(! numCartao.equals(null)){
+            				hospede.setNumCartao(numCartao);
             		}
             		  					
 				
