@@ -97,5 +97,19 @@ public class telaContratos extends JFrame {
 		
 		JList list_1 = new JList();
 		telaMostraContrato.setViewportView(list_1);
+		
+		JButton btnServios = new JButton("Servi\u00E7os");
+		btnServios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaAdiconaServico TAS = new telaAdiconaServico();
+				TAS.show();
+			}
+		});
+		btnServios.setBounds(386, 474, 142, 28);
+		btnServios.setForeground(Color.WHITE);
+		btnServios.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
+		btnServios.setBackground(corBotao);
+		
+		contentPane.add(btnServios);
 	}
 }

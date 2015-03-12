@@ -65,7 +65,7 @@ public class TelaPrincipal extends JFrame {
 		JButton btnServios = new JButton("Servi\u00E7os");
 		btnServios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				telaServico TS = new telaServico();
+				telaServicos TS = new telaServicos();
 				TS.show();
 			}
 		});

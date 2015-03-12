@@ -1,5 +1,7 @@
 package telas;
 
+import gerenteServicos.GerenteServicos;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -14,6 +16,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import contrato.Contrato;
+import aluguelCarros.AluguelCarro;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -26,6 +31,7 @@ public class telaServicoCarro extends JFrame {
 
 	Color corFundo = new Color(244, 246, 245); 
 	Color corBotao = new Color(68, 133, 244);
+	private JTextField tfPlaca;
 	
 	/**
 	 * Launch the application.
@@ -47,17 +53,17 @@ public class telaServicoCarro extends JFrame {
 		lblTipoDeCarro.setBounds(10, 11, 74, 14);
 		contentPane.add(lblTipoDeCarro);
 		
-		JComboBox<String> comboBoxTipoCarro = new JComboBox<String>();
+		final JComboBox<String> comboBoxTipoCarro = new JComboBox<String>();
 		comboBoxTipoCarro.setBounds(94, 8, 128, 20);
 		contentPane.add(comboBoxTipoCarro);
 		comboBoxTipoCarro.addItem("Executivo");
 		comboBoxTipoCarro.addItem("Luxo");
 		
-		JRadioButton rdbtnTanqueCheio = new JRadioButton("Tanque Cheio");
+		final JRadioButton rdbtnTanqueCheio = new JRadioButton("Tanque Cheio");
 		rdbtnTanqueCheio.setBounds(6, 45, 109, 23);
 		contentPane.add(rdbtnTanqueCheio);
 		
-		JRadioButton rdbtnSeguro = new JRadioButton("Seguro");
+		final JRadioButton rdbtnSeguro = new JRadioButton("Seguro");
 		rdbtnSeguro.setBounds(6, 71, 109, 23);
 		contentPane.add(rdbtnSeguro);
 		
@@ -80,11 +86,11 @@ public class telaServicoCarro extends JFrame {
 		tfDataSaida.setColumns(10);
 		
 		JLabel lblHospede = new JLabel("Hospede");
-		lblHospede.setBounds(10, 130, 74, 14);
+		lblHospede.setBounds(10, 203, 74, 14);
 		contentPane.add(lblHospede);
 		
 		tfHospedeCarro = new JTextField();
-		tfHospedeCarro.setBounds(10, 155, 86, 20);
+		tfHospedeCarro.setBounds(10, 228, 86, 20);
 		contentPane.add(tfHospedeCarro);
 		tfHospedeCarro.setColumns(10);
 		
@@ -93,12 +99,21 @@ public class telaServicoCarro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAdicionar.setBounds(106, 154, 89, 23);
+		btnAdicionar.setBounds(106, 227, 89, 23);
 		btnAdicionar.setForeground(Color.WHITE);
 		btnAdicionar.setBorder(null);
 		btnAdicionar.setBackground(corBotao);
 		btnAdicionar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 10));
 		
 		contentPane.add(btnAdicionar);
+		
+		JLabel lblPlaca = new JLabel("Placa");
+		lblPlaca.setBounds(10, 101, 46, 14);
+		contentPane.add(lblPlaca);
+		
+		tfPlaca = new JTextField();
+		tfPlaca.setBounds(10, 129, 86, 20);
+		contentPane.add(tfPlaca);
+		tfPlaca.setColumns(10);
 	}
 }

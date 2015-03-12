@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class telaServico extends JFrame {
+public class telaAdiconaServico extends JFrame {
 
 	private JPanel contentPane;
 	Color corFundo = new Color(244, 246, 245); 
@@ -28,7 +28,7 @@ public class telaServico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public telaServico() {
+	public telaAdiconaServico() {
 		setTitle("Servi\u00E7os");
 		
 		setBounds(420, 230, 450, 300);
