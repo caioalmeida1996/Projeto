@@ -29,7 +29,8 @@ public class telaServico extends JFrame {
 	 * Create the frame.
 	 */
 	public telaServico() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Servi\u00E7os");
+		
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -43,6 +44,8 @@ public class telaServico extends JFrame {
 		
 		btnCarro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				telaServicoCarro TSC = new telaServicoCarro();
+				TSC.show();
 			}
 		});
 		

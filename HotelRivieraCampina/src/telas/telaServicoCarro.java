@@ -1,0 +1,104 @@
+package telas;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class telaServicoCarro extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField tfDataEntrada;
+	private JTextField tfDataSaida;
+	private JTextField textField;
+
+	Color corFundo = new Color(244, 246, 245); 
+	Color corBotao = new Color(68, 133, 244);
+	
+	/**
+	 * Launch the application.
+	 */
+
+	/**
+	 * Create the frame.
+	 */
+	public telaServicoCarro() {
+		setTitle("Carro");
+		
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblTipoDeCarro = new JLabel("Tipo De Carro");
+		lblTipoDeCarro.setBounds(10, 11, 74, 14);
+		contentPane.add(lblTipoDeCarro);
+		
+		JComboBox<String> comboBoxTipoCarro = new JComboBox<String>();
+		comboBoxTipoCarro.setBounds(94, 8, 128, 20);
+		contentPane.add(comboBoxTipoCarro);
+		comboBoxTipoCarro.addItem("Executivo");
+		comboBoxTipoCarro.addItem("Luxo");
+		
+		JRadioButton rdbtnTanqueCheio = new JRadioButton("Tanque Cheio");
+		rdbtnTanqueCheio.setBounds(6, 45, 109, 23);
+		contentPane.add(rdbtnTanqueCheio);
+		
+		JRadioButton rdbtnSeguro = new JRadioButton("Seguro");
+		rdbtnSeguro.setBounds(6, 71, 109, 23);
+		contentPane.add(rdbtnSeguro);
+		
+		JLabel lblDataDeEntrada = new JLabel("Data de Entrada");
+		lblDataDeEntrada.setBounds(277, 11, 89, 14);
+		contentPane.add(lblDataDeEntrada);
+		
+		tfDataEntrada = new JTextField();
+		tfDataEntrada.setBounds(277, 33, 89, 20);
+		contentPane.add(tfDataEntrada);
+		tfDataEntrada.setColumns(10);
+		
+		JLabel lblDataDeSaida = new JLabel("Data de Saida");
+		lblDataDeSaida.setBounds(277, 62, 89, 14);
+		contentPane.add(lblDataDeSaida);
+		
+		tfDataSaida = new JTextField();
+		tfDataSaida.setBounds(277, 87, 89, 20);
+		contentPane.add(tfDataSaida);
+		tfDataSaida.setColumns(10);
+		
+		JLabel lblHospede = new JLabel("Hospede");
+		lblHospede.setBounds(10, 130, 74, 14);
+		contentPane.add(lblHospede);
+		
+		textField = new JTextField();
+		textField.setBounds(10, 155, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAdicionar.setBounds(106, 154, 89, 23);
+		btnAdicionar.setForeground(Color.WHITE);
+		btnAdicionar.setBorder(null);
+		btnAdicionar.setBackground(corBotao);
+		btnAdicionar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 10));
+		
+		contentPane.add(btnAdicionar);
+	}
+}

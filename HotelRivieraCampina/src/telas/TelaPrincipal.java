@@ -47,6 +47,20 @@ public class TelaPrincipal extends JFrame {
 		btnCheckIn.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
 		btnCheckIn.setBounds(10, 21, 139, 23);
 		contentPane.add(btnCheckIn);
+		
+		JButton btnServio = new JButton("Servi\u00E7o");
+		btnServio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaServico TS = new telaServico();
+				TS.show();
+			}
+		});
+		btnServio.setBounds(10, 55, 139, 23);
+		btnServio.setForeground(Color.WHITE);
+		btnServio.setBorder(null);
+		btnServio.setBackground(corBotao);
+		btnServio.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		contentPane.add(btnServio);
 	}
 
 }
