@@ -26,7 +26,7 @@ public class TelaPrincipal extends JFrame {
 		
 		setTitle("Hotel Riviera Campina");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 102);
+		setBounds(100, 100, 451, 233);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -57,10 +57,38 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnHospedes.setForeground(Color.WHITE);
 		btnHospedes.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
-		btnHospedes.setBounds(176, 21, 139, 23);
+		btnHospedes.setBounds(10, 66, 139, 23);
 		contentPane.add(btnHospedes);
 		btnHospedes.setBorder(null);
 		btnHospedes.setBackground(corBotao);
+		
+		JButton btnServios = new JButton("Servi\u00E7os");
+		btnServios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaServico TS = new telaServico();
+				TS.show();
+			}
+		});
+		btnServios.setBounds(10, 114, 139, 23);
+		btnServios.setBackground(corBotao);
+		btnServios.setBorder(null);
+		btnServios.setForeground(Color.WHITE);
+		btnServios.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
+		contentPane.add(btnServios);
+		
+		JButton btnCheckOut = new JButton("Check Out");
+		btnCheckOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				telaCheckOut TCO = new telaCheckOut();
+				TCO.show();
+			}
+		});
+		btnCheckOut.setBounds(159, 21, 139, 23);
+		btnCheckOut.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
+		btnCheckOut.setForeground(Color.WHITE);
+		btnCheckOut.setBorder(null);
+		btnCheckOut.setBackground(corBotao);
+		contentPane.add(btnCheckOut);
 	}
 	
 	public Hotel getHotel(){

@@ -38,7 +38,7 @@ public class telaCheckOut extends JFrame {
 	 */
 	public telaCheckOut() {
 		setTitle("Check Out");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		setBounds(420, 230, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
