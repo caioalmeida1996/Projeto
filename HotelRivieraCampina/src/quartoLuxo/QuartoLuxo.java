@@ -60,8 +60,8 @@ public class QuartoLuxo extends Quarto{
 			return false;
 		QuartoLuxo quarto = (QuartoLuxo) objeto;
 		
-		return this.getDataInicial().getTime().equals(quarto.getDataInicial().getTime()) &&
-				this.getDataFinal().getTime().equals(quarto.getDataFinal().getTime()) &&
+		return super.getDataInicial().DAY_OF_YEAR == quarto.getDataInicial().DAY_OF_YEAR &&
+				super.getDataFinal().DAY_OF_YEAR == quarto.getDataFinal().DAY_OF_YEAR &&
 				this.getTipoQuarto().equals(quarto.getTipoQuarto()) &&
 				this.getCamaExtra().equals(quarto.getCamaExtra()) &&
 				this.getCusto() == quarto.getCusto();

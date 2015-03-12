@@ -140,8 +140,8 @@ public class AluguelCarro extends ServicoSuplementar{
 			return false;
 		AluguelCarro carro = (AluguelCarro) obj;	
 		
-		return super.getDataInicial().getTime().equals(carro.getDataInicial().getTime()) &&
-				super.getDataFinal().getTime().equals(carro.getDataFinal().getTime()) &&
+		return super.getDataInicial().DAY_OF_YEAR == carro.getDataInicial().DAY_OF_YEAR &&
+				super.getDataFinal().DAY_OF_YEAR == carro.getDataFinal().DAY_OF_YEAR &&
 				this.getPlaca().equals(carro.getPlaca()) &&
 				this.getTanque().equals(carro.getTanque()) &&
 				this.getSeguro().equals(carro.getSeguro()) &&

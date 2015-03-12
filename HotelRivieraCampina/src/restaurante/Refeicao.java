@@ -44,8 +44,8 @@ public class Refeicao extends ServicoSuplementar{
 			return false;
 		Refeicao refeicao = (Refeicao) objeto;
 		
-		return this.getDataInicial().getTime().equals(refeicao.getDataInicial().getTime()) &&
-				this.getDataFinal().getTime().equals(refeicao.getDataFinal().getTime()) &&
+		return super.getDataInicial().DAY_OF_YEAR == refeicao.getDataInicial().DAY_OF_YEAR &&
+				super.getDataFinal().DAY_OF_YEAR == refeicao.getDataFinal().DAY_OF_YEAR &&
 				this.getCusto() == refeicao.getCusto();
 	}
 	

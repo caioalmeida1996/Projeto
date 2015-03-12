@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import aluguelCarros.AluguelCarro;
 import aluguelCarros.TemSeguro;
 import aluguelCarros.TemTanqueCheio;
 import aluguelCarros.TipoCarro;
@@ -18,6 +19,7 @@ import quartoExecutivo.QuartoExecutivo;
 import quartoExecutivo.TemCamaExtra;
 import quartoExecutivo.TipoQuartoExecutivo;
 import quartoLuxo.TipoQuartoLuxo;
+import servico.Servico;
 import contrato.Contrato;
 import endereco.Endereco;
 
@@ -88,7 +90,7 @@ public class HotelTest {
         	System.out.println(hotelTeste.getGerenteHospede().getHospedes());
         	System.out.println("--------------------------------------");
         	hotelTeste.getGerenteHospede().removeHospede(hospede3);
-        	System.out.println(hotelTeste.getGerenteHospede().getHospedes());
+        	System.out.println(hotelTeste.getGerenteHospede().pesquisaHospede("heitor").getContrato());
             System.out.println("-------------------------------------");
             //testGetContratos();
              
@@ -97,7 +99,7 @@ public class HotelTest {
              
              }
         
-        @Test
+       // @Test
         public void testGerenteServicos() throws Exception {
         	hotelTeste = new Hotel();
         	
@@ -111,6 +113,13 @@ public class HotelTest {
         	hotelTeste.getGerenteServico(contrato).criaServicoSuplementarRestaurante(Calendar.getInstance(), Calendar.getInstance(), 100);
         	hotelTeste.getGerenteServico(contrato).criaServicoSuplementarAluguelCarros(Calendar.getInstance(), Calendar.getInstance(), "asd123", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO);
         	
+        	System.out.println("---");
+        	System.out.println(hotelTeste.getGerenteServico(contrato).getServicos());
+        	System.out.println("---");
+        	AluguelCarro carro = hotelTeste.getGerenteServico().criaServicoSuplementarAluguelCarros(Calendar.getInstance(), Calendar.getInstance(), "asd123", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO);
+        	System.out.println(hotelTeste.getGerenteServico(contrato).pesquisaServico(carro));
+        	Servico carro2 = hotelTeste.getGerenteServico(contrato).pesquisaServico(carro);
+        	hotelTeste.getGerenteServico(contrato).atualizarServicoSuplementarCarro((AluguelCarro) carro2, null, null, "aaabbb", TemTanqueCheio.NAO, TemSeguro.NAO, TipoCarro.LUXO);
         	System.out.println("---");
         	System.out.println(hotelTeste.getGerenteServico(contrato).getServicos());
         	

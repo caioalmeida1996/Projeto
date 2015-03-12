@@ -73,8 +73,8 @@ public class Babysitter extends ServicoSuplementar{
 			return false;
 		Babysitter baby = (Babysitter) objeto;
 		
-		return super.getDataInicial().getTime().equals(baby.getDataInicial().getTime()) &&
-				super.getDataFinal().getTime().equals(baby.getDataFinal().getTime()) &&
+		return super.getDataInicial().DAY_OF_YEAR == baby.getDataInicial().DAY_OF_YEAR &&
+				super.getDataFinal().DAY_OF_YEAR == baby.getDataFinal().DAY_OF_YEAR &&
 				this.getCusto() == baby.getCusto();
 	}// fim do esquals
 	

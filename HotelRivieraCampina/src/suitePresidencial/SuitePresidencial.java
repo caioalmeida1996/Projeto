@@ -45,8 +45,8 @@ public class SuitePresidencial extends Quarto{
 			return false;
 		SuitePresidencial suite = (SuitePresidencial) objeto;
 		
-		return this.getDataInicial().getTime().equals(suite.getDataInicial().getTime()) &&
-				this.getDataFinal().getTime().equals(suite.getDataFinal().getTime()) &&
+		return super.getDataInicial().DAY_OF_YEAR == suite.getDataInicial().DAY_OF_YEAR &&
+				super.getDataFinal().DAY_OF_YEAR == suite.getDataFinal().DAY_OF_YEAR &&
 				this.getCusto() == suite.getCusto();
 	}
 	

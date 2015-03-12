@@ -68,8 +68,8 @@ public class GerenteServicos{
 	
 	
 	//------------metodos para criar servicos suplementares
- 	public ServicoSuplementar criaServicoSuplementarAluguelCarros(Calendar dataInicial,Calendar dataFinal, String placa, TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo){
-		ServicoSuplementar carro = new AluguelCarro(dataInicial, dataFinal, placa, tanque, seguro, tipo, contrato);
+ 	public AluguelCarro criaServicoSuplementarAluguelCarros(Calendar dataInicial,Calendar dataFinal, String placa, TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo){
+		AluguelCarro carro = new AluguelCarro(dataInicial, dataFinal, placa, tanque, seguro, tipo, contrato);
 		if (contrato == null) {
 			return carro;
 		}
@@ -77,7 +77,7 @@ public class GerenteServicos{
 		return carro;		
 	}
 	
-	public ServicoSuplementar criaServicoSuplementarBabysitter(Calendar dataInicial,Calendar dataFinal){
+	public Babysitter criaServicoSuplementarBabysitter(Calendar dataInicial,Calendar dataFinal){
 		Babysitter babysitter = new Babysitter(dataInicial, dataFinal, contrato);
 		if (contrato == null) {
 			return babysitter;
@@ -88,7 +88,7 @@ public class GerenteServicos{
 		
 	}
 
-	public ServicoSuplementar criaServicoSuplementarRestaurante(Calendar dataInicial,Calendar dataFinal,double valor){
+	public Refeicao criaServicoSuplementarRestaurante(Calendar dataInicial,Calendar dataFinal,double valor){
 		Refeicao refeicao = new Refeicao(dataInicial, dataFinal, valor,contrato);
 		if (contrato == null) {
 			return refeicao;
@@ -118,7 +118,7 @@ public class GerenteServicos{
 	}
 	
 	//atualizar
-	public Servico atualizarServicoQuarto(Quarto quarto,Calendar dataInicial,Calendar dataFinal) throws Exception{
+	public Quarto atualizarServicoQuarto(Quarto quarto,Calendar dataInicial,Calendar dataFinal) throws Exception{
 		if(!dataFinal.equals(null)){
 			quarto.setDataFinal(dataFinal);
 			}
@@ -129,27 +129,33 @@ public class GerenteServicos{
 		return quarto;
 	}
 	
-	public Servico atualizarServicoSuplementarCarro(AluguelCarro carro, Calendar dataInicial,Calendar dataFinal, String placa, TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo){
-		if(!dataFinal.equals(null)){
+	public AluguelCarro atualizarServicoSuplementarCarro(AluguelCarro carro, Calendar dataInicial,Calendar dataFinal, String placa, TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo){
+		if(!(dataFinal == null)){
+			System.out.println("1");
 			carro.setDataFinal(dataFinal);
 			}
-		if(!dataInicial.equals(null)){
+		if(!(dataInicial == null)){
+			System.out.println("2");
 			carro.setDataFinal(dataInicial);
 			}
-		if(!placa.equals(null)){
+		if(!(placa == null)){
+			System.out.println("3");
 			carro.setPlaca(placa);
 			}
-		if(!tanque.equals(null)){
+		if(!(tanque == null)){
 			carro.setTanque(tanque);
 			}
-		if(!seguro.equals(null)){
+		if(!(seguro == null)){
 			carro.setSeguro(seguro);
 			}
+		if(!(tipo == null)){
+			carro.setTipoDeCarro(tipo);
+		}
 		return carro;
 		
 	}
 
-	public Servico atualizarServicoSuplementarBabysitter(Babysitter baby ,Calendar dataInicial,Calendar dataFinal){
+	public Babysitter atualizarServicoSuplementarBabysitter(Babysitter baby ,Calendar dataInicial,Calendar dataFinal){
 		if(!dataFinal.equals(null)){
 			baby.setDataFinal(dataFinal);
 			}
@@ -159,7 +165,7 @@ public class GerenteServicos{
 		return baby;
 	}
 
-	public ServicoSuplementar criaServicoSuplementarRestaurante(Refeicao restaurante, Calendar dataInicial,Calendar dataFinal,double valor){
+	public Refeicao criaServicoSuplementarRestaurante(Refeicao restaurante, Calendar dataInicial,Calendar dataFinal,double valor){
 		if(!dataFinal.equals(null)){
 			restaurante.setDataFinal(dataFinal);
 			}
