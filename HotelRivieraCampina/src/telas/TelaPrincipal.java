@@ -89,6 +89,20 @@ public class TelaPrincipal extends JFrame {
 		btnCheckOut.setBorder(null);
 		btnCheckOut.setBackground(corBotao);
 		contentPane.add(btnCheckOut);
+		
+		JButton btnContratos = new JButton("Contratos");
+		btnContratos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaContratos TC = new telaContratos();
+				TC.show();
+			}
+		});
+		btnContratos.setBounds(159, 66, 139, 23);
+		btnContratos.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
+		btnContratos.setForeground(Color.WHITE);
+		btnContratos.setBorder(null);
+		btnContratos.setBackground(corBotao);
+		contentPane.add(btnContratos);
 	}
 	
 	public Hotel getHotel(){
