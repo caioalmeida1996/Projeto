@@ -6,7 +6,7 @@ import endereco.Endereco;;
 
 /**
  * Classe que representa um hospede do hotel
- * @author akylles
+ * @author akylles,heitor
  *
  */
 public class Hospede {
@@ -28,6 +28,9 @@ public class Hospede {
 	 * 			data de nascimento do hospede
 	 * @param endereco
 	 * 			endereco do hospede
+	 * @param numcartao
+	 * 			numero do cartão do hospede
+	 * 			
 	 */
 	public Hospede(String nome, String cpf, Calendar dataNascimento, Endereco endereco,String numCartao) {
 		super();

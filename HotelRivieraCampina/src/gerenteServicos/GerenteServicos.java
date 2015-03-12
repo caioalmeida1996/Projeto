@@ -21,7 +21,11 @@ import servico.ServicoSuplementar;
 import suitePresidencial.SuitePresidencial;
 import contrato.Contrato;
 import hotel.Hotel;
-
+/**
+ * 
+ * @author heitor
+ *
+ */
 public class GerenteServicos{
 	private Contrato contrato;
 	private int nPresidencial = 5;
@@ -34,11 +38,18 @@ public class GerenteServicos{
 	
 	
 
-
+	/**
+	 * cria um gerente servico sem contrato associado
+	 */
  	public GerenteServicos(){
 		
 	}
 	
+ 	/**
+ 	 * cria um gerente de servico associado a um contrato passado como parametro
+ 	 * @param contrato 
+ 	 * 				contrato que tera seus servicos manipulados
+ 	 */
 	public GerenteServicos(Contrato contrato) {
 		this.contrato = contrato;
 	}
@@ -47,6 +58,18 @@ public class GerenteServicos{
 	
 	
 	//criar servicos esenciais 
+	/**
+	 * cria um Servico do tipo Quarto Presidencial
+	 * @param dataInicial
+	 * 			data incicial da ocupacao do quarto
+	 * @param dataFinal
+	 * 			data final da ocupacao do quarto
+	 * @return
+	 * 			retorna o quarto
+	 * 
+	 * 			se o gerente servico estiver associado a um contrato
+	 * 			adiciona o quarto ao contrato de forma automatica.
+	 */
 	public Quarto criaServicoQuartoPresidencial(Calendar dataInicial,Calendar dataFinal){
 		Quarto quarto = new SuitePresidencial(dataInicial, dataFinal, contrato);
 		if (this.contrato == null) {
@@ -57,6 +80,24 @@ public class GerenteServicos{
 		return quarto;
 	}
 	
+	
+	/**
+	 * cria um Servico do tipo Quarto Luxo
+	 * 
+	* @param dataInicial
+	 * 			data incicial da ocupacao do quarto
+	 * @param dataFinal
+	 * 			data final da ocupacao do quarto
+	 * @param tipoQuarto
+	 * 			o tipo do quarto(simples , duplo, triplo)
+	 * @param camaExtra
+	 * 			informa se o quarto possui cama extra
+	 * @return
+	 * 			retorna o quarto
+	 * 
+	 * 			se o gerente servico estiver associado a um contrato
+	 * 			adiciona o quarto ao contrato de forma automatica.
+	 */
 	public Quarto criaServicoQuartoLuxo(Calendar dataInicial, Calendar dataFinal, TipoQuartoLuxo tipoQuarto, TemCamaExtra camaExtra){
 		Quarto quarto = new QuartoLuxo(dataInicial,dataFinal, tipoQuarto, camaExtra, contrato);
 		if (this.contrato == null) {
@@ -82,6 +123,24 @@ public class GerenteServicos{
 		return quarto;
 	}
 	
+	
+	/**
+	 * cria um Servico do tipo Quarto Executivo
+	 * 
+	* @param dataInicial
+	 * 			data incicial da ocupacao do quarto
+	 * @param dataFinal
+	 * 			data final da ocupacao do quarto
+	 * @param tipoQuarto
+	 * 			o tipo do quarto(simples , duplo, triplo)
+	 * @param camaExtra
+	 * 			informa se o quarto possui cama extra
+	 * @return
+	 * 			retorna o quarto
+	 * 
+	 * 			se o gerente servico estiver associado a um contrato
+	 * 			adiciona o quarto ao contrato de forma automatica.
+	 */
 	public Quarto criaServicoQuartoExecutivo(Calendar dataInicial, Calendar dataFinal, TipoQuartoExecutivo tipoQuarto, TemCamaExtra camaExtra){
 		Quarto quarto = new QuartoExecutivo(dataInicial, dataFinal, tipoQuarto, camaExtra, contrato);
 		if (this.contrato == null) {
@@ -109,6 +168,27 @@ public class GerenteServicos{
 	
 	
 	//------------metodos para criar servicos suplementares
+	
+	/**
+	 * cria um Servico Suplementar do tipo Aluguel de Carros
+	 * @param dataInicial
+	 * 			a data inicial da utilizacao do servico
+	 * @param dataFinal
+	 * 			a data Final da utilizacao do servico
+	 * @param placa
+	 * 			a placa do carro
+	 * @param tanque
+	 * 			informa se o tanque esta cheio ou nao
+	 * @param seguro
+	 * 			informa se possui seguro ou nao
+	 * @param tipo
+	 * 			informa o tipo do carro
+	 * @return
+	 * 			o servico criado;
+	 * 
+	 * caso o gerente servico estaja associado a um contrato, o serico criado sera automaticamnete
+	 * adiciona na lista de servico do respectivo contrato.
+	 */
  	public AluguelCarro criaServicoSuplementarAluguelCarros(Calendar dataInicial,Calendar dataFinal, String placa, TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo){
 		AluguelCarro carro = new AluguelCarro(dataInicial, dataFinal, placa, tanque, seguro, tipo, contrato);
 		if (contrato == null) {
@@ -118,6 +198,18 @@ public class GerenteServicos{
 		return carro;		
 	}
 	
+ 	/**
+ 	 * 
+ 	 * @param dataInicial
+	 * 			a data inicial da utilizacao do servico
+	 * @param dataFinal
+	 * 			a data Final da utilizacao do servico
+ 	 * @return
+	 * 			o servico criado;
+	 * 
+	 * caso o gerente servico estaja associado a um contrato, o serico criado sera automaticamnete
+	 * adiciona na lista de servico do respectivo contrato.
+	 */
 	public Babysitter criaServicoSuplementarBabysitter(Calendar dataInicial,Calendar dataFinal){
 		Babysitter babysitter = new Babysitter(dataInicial, dataFinal, contrato);
 		if (contrato == null) {
@@ -129,6 +221,20 @@ public class GerenteServicos{
 		
 	}
 
+	/**
+	 * 
+	 * @param dataInicial
+	 * 			a data inicial da utilizacao do servico
+	 * @param dataFinal
+	 * 			a data Final da utilizacao do servico
+	 * @param valor
+	 * 			o valor da refeicao consumida
+	 * @return
+	 * 			o servico criado;
+	 * 
+	 * caso o gerente servico estaja associado a um contrato, o serico criado sera automaticamnete
+	 * adiciona na lista de servico do respectivo contrato.
+	 */
 	public Refeicao criaServicoSuplementarRestaurante(Calendar dataInicial,Calendar dataFinal,double valor){
 		Refeicao refeicao = new Refeicao(dataInicial, dataFinal, valor,contrato);
 		if (contrato == null) {
@@ -140,12 +246,24 @@ public class GerenteServicos{
 	
 	
 	//adicionar servico
+	/**
+	 * adiciona um servico ao contrato
+	 * @param servico
+	 * 			servico a ser adicionado
+	 */
 	public void adiconarServico(Servico servico) throws Exception{
 		if(contrato.equals(null)) throw new Exception("ERROR, contrato ausente.");
 		contrato.getServicos().add(servico);
 	}
 	
 	//pesquisar
+	/**
+	 *  pesquisa um servico na lista do contrato
+	 * @param servico
+	 * 			servico a ser pesquisado
+	 * @return	
+	 * 			caso encontre objeto retorna o mesmo, se nao retorna null
+	 */
 	public Servico pesquisaServico(Servico servico) throws Exception{
 		if(contrato.equals(null)) throw new Exception("ERROR, contrato ausente.");
 		for (int i = 0; i < contrato.getServicos().size(); i++) {
@@ -159,6 +277,18 @@ public class GerenteServicos{
 	}
 	
 	//atualizar
+	/**
+	 * atualizar o Servico de Quarto
+	 * 
+	 * @param quarto 
+	 * 			quarto a ser atualizado
+	 * @param dataInicial
+	 * 			nova data inicial do servico
+	 * @param dataFinal
+	 * 			nova data final do contrato
+	 * @return
+	 * 			o servico atualizado
+	 */
 	public Quarto atualizarServicoQuarto(Quarto quarto,Calendar dataInicial,Calendar dataFinal) throws Exception{
 		if(!dataFinal.equals(null)){
 			quarto.setDataFinal(dataFinal);
@@ -170,6 +300,26 @@ public class GerenteServicos{
 		return quarto;
 	}
 	
+	/**
+	 * Atualiza um Servico Suplementar do tipo Aluguel de Carros
+	 * 
+	 * @param carro
+	 * 			carro a ser atualizado
+	 * @param dataInicial
+	 * 			a nova data inicial da utilizacao do servico
+	 * @param dataFinal
+	 * 			a nova data Final da utilizacao do servico
+	 * @param placa
+	 * 			a nova placa do carro
+	 * @param tanque
+	 * 			informa se o tanque esta cheio ou nao
+	 * @param seguro
+	 * 			informa se possui seguro ou nao
+	 * @param tipo
+	 * 			informa o novo tipo do carro
+	 * @return
+	 * 			o servico atualizado;
+	 */
 	public AluguelCarro atualizarServicoSuplementarCarro(AluguelCarro carro, Calendar dataInicial,Calendar dataFinal, String placa, TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo){
 		if(!(dataFinal == null)){
 			System.out.println("1");
@@ -196,6 +346,17 @@ public class GerenteServicos{
 		
 	}
 
+	/**
+ 	 * @param baby
+ 	 * 			o baysister a ser atualizado
+ 	 * @param dataInicial
+	 * 			a data nova inicial da utilizacao do servico
+	 * @param dataFinal
+	 * 			a data nova Final da utilizacao do servico
+ 	 * @return
+	 * 			o servico atualizado;
+	 * 
+	 */
 	public Babysitter atualizarServicoSuplementarBabysitter(Babysitter baby ,Calendar dataInicial,Calendar dataFinal){
 		if(!dataFinal.equals(null)){
 			baby.setDataFinal(dataFinal);
@@ -206,7 +367,21 @@ public class GerenteServicos{
 		return baby;
 	}
 
-	public Refeicao criaServicoSuplementarRestaurante(Refeicao restaurante, Calendar dataInicial,Calendar dataFinal,double valor){
+	/**
+	 * 
+	 * @param restaurante
+	 * 			a refeicao a ser atualizada
+	 * @param dataInicial
+	 * 			a nova data inicial da utilizacao do servico
+	 * @param dataFinal
+	 * 			a nova data Final da utilizacao do servico
+	 * @param valor
+	 * 			o novo valor da refeicao consumida
+	 * @return
+	 * 			o servico atualizado;
+	 * 
+	 */
+	public Refeicao atualizarServicoSuplementarRestaurante(Refeicao restaurante, Calendar dataInicial,Calendar dataFinal,double valor){
 		if(!dataFinal.equals(null)){
 			restaurante.setDataFinal(dataFinal);
 			}
@@ -222,49 +397,83 @@ public class GerenteServicos{
 
 	
 	//remover
+	/**
+	 * remove um servico do contrato
+	 * @param servico
+	 * 			servico a ser removido
+	 */
 	public void removeServico(Servico servico) throws Exception{
 		if(contrato.equals(null)) throw new Exception("ERROR, contrato ausente.");
 		contrato.getServicos().remove(servico);
 	}
 
+	/**
+	 * 
+	 * @return
+	 * 		retorna uma lista de servicos do contrato
+	 */
 	public List<Servico> getServicos() throws Exception {
 		System.out.println(contrato);
 		if(contrato == null) throw new Exception("ERROR, contrato ausente.");
 		return contrato.getServicos();
 	}
 
-
+	/**
+	 * 
+	 * @return a quantida restante de suite presidencial
+	 */
 	public int getnPresidencial() {
 		return nPresidencial;
 	}
 
+	/**
+	 * 
+	 * @return a quantida restante de quarto luxo simples
+	 */
 	public int getnLuxoSimples() {
 		return nLuxoSimples;
 	}
 
+	/**
+	 * 
+	 * @return a quantida restante de quarto luxo duplo
+	 */
 	public int getnLuxoDuplo() {
 		return nLuxoDuplo;
 	}
 
+	/**
+	 * 
+	 * @return a quantida restante de quarto luxo triplo
+	 */
 	public int getnLuxoTriplo() {
 		return nLuxoTriplo;
 	}
 
+	/**
+	 * 
+	 * @return a quantida restante de quarto executivo simples
+	 */
 	public int getnExecutivoSimples() {
 		return nExecutivoSimples;
 	}
 
+	/**
+	 * 
+	 * @return a quantida restante de quarto executivo duplo
+	 */
 	public int getnExecutivoDuplo() {
 		return nExecutivoDuplo;
 	}
 
+	/**
+	 * 
+	 * @return a quantida restante de quarto executivo triplo
+	 */
 	public int getnExecutivoTriplo() {
 		return nExecutivoTriplo;
 	}
 	
-	
-		
-
 	
 
 }
