@@ -36,6 +36,7 @@ import java.util.Calendar;
 
 
 
+
 import contrato.Contrato;
 
 import javax.swing.JComboBox;
@@ -43,6 +44,7 @@ import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.text.MaskFormatter;
 
 import endereco.Endereco;
+import estrategiaDeCalculo.Tarifacao;
 import quarto.Quarto;
 import quartoExecutivo.QuartoExecutivo;
 import quartoExecutivo.TemCamaExtra;
@@ -69,6 +71,7 @@ public class TelaCheckIn extends JFrame {
 	private JTextField tfDataEntrada;
 	private JTextField tfDataSaida;
 	private JComboBox<String> comboBoxTipoDeQuarto = new JComboBox<String>();
+	private JComboBox<String> comboBoxTarifacao = new JComboBox<String>();
 	private JRadioButton rbCamaExtra = new JRadioButton("Cama extra");
 	private static ArrayList<Servico> servicos = new ArrayList<Servico>(); 
 	private Quarto quarto;
@@ -238,12 +241,12 @@ public class TelaCheckIn extends JFrame {
 		JLabel label_1 = new JLabel("Data de Entrada");
 		label_1.setForeground(Color.DARK_GRAY);
 		label_1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		label_1.setBounds(225, 231, 94, 14);
+		label_1.setBounds(355, 225, 94, 14);
 
 		JLabel label_5 = new JLabel("Data de Saida");
 		label_5.setForeground(Color.DARK_GRAY);
 		label_5.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
-		label_5.setBounds(349, 231, 86, 14);
+		label_5.setBounds(479, 225, 86, 14);
 //		JDateChooser entradaJdate = new JDateChooser();
 //		entradaJdate.getCalendarButton().addActionListener(
 				new ActionListener() {
@@ -309,8 +312,8 @@ public class TelaCheckIn extends JFrame {
 					}
 					//CRIA O OBJETO HOSPEDE----------------------------------------------------------
 					
-					hospede = TelaPrincipal.hotel.getGerenteHospede().criaHospede(tfNome.getText(), tfCPF.getText(), calHospede, endereco);
-					contrato = TelaPrincipal.hotel.getGerenteContrato().Checkin(calEntrada, calSaida, hospede, tfCartaoDeCredito.getText());
+					hospede = TelaPrincipal.hotel.getGerenteHospede().criaHospede(tfNome.getText(), tfCPF.getText(), calHospede, endereco, tfCartaoDeCredito.getText());
+					contrato = TelaPrincipal.hotel.getGerenteContrato().Checkin(calEntrada, calSaida, hospede, (Tarifacao) comboBoxTarifacao.getSelectedItem());
 					
 					String itemSelecionado = comboBoxTipoDeQuarto.getSelectedItem().toString();
 					criaQuartos(calEntrada, calSaida, hospede, itemSelecionado);
@@ -348,13 +351,13 @@ public class TelaCheckIn extends JFrame {
 		getContentPane().add(btnFechar);
 
 		tfDataEntrada = new JTextField();
-		tfDataEntrada.setBounds(225, 251, 114, 19);
+		tfDataEntrada.setBounds(355, 245, 114, 19);
 		getContentPane().add(tfDataEntrada);
 		tfDataEntrada.setColumns(10);
 		tfDataEntrada.setBorder(null);
 
 		tfDataSaida = new JTextField();
-		tfDataSaida.setBounds(349, 251, 114, 19);
+		tfDataSaida.setBounds(479, 245, 114, 19);
 		getContentPane().add(tfDataSaida);
 		tfDataSaida.setColumns(10);
 		tfDataSaida.setBorder(null);
@@ -419,6 +422,22 @@ public class TelaCheckIn extends JFrame {
 		lblDadosContratuais.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
 		lblDadosContratuais.setBounds(20, 183, 230, 31);
 		getContentPane().add(lblDadosContratuais);
+		
+		JLabel lblTarifao = new JLabel("Tarifa\u00E7\u00E3o:");
+		lblTarifao.setBounds(181, 228, 55, 14);
+		lblTarifao.setForeground(Color.DARK_GRAY);
+		lblTarifao.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		getContentPane().add(lblTarifao);
+		
+		
+		comboBoxTarifacao.setBounds(240, 225, 88, 20);
+		getContentPane().add(comboBoxTarifacao);
+		comboBoxTarifacao.addItem("São João");
+		comboBoxTarifacao.addItem("Natal");
+		comboBoxTarifacao.addItem("Alta Estação");
+		comboBoxTarifacao.addItem("Baixa Estação");
+		comboBoxTarifacao.addItem("Estação Simples");
+		
 		
 		comboBoxNdePessoas.addItem("1");
 		comboBoxNdePessoas.addItem("2");
