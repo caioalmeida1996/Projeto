@@ -68,9 +68,9 @@ public class HotelTest {
             hospede3 = hotelTeste.getGerenteHospede().criaHospede("gullo", "2222222", Calendar.getInstance(), endereco3);
         		
             //cria 3 contratos
-            contrato1 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede1, "1111111", tarifa);
-            contrato2 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede2, "2222222", tarifa);
-            contrato3 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede3, "3333333", tarifa);
+            contrato1 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede1, tarifa);
+            contrato2 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede2, tarifa);
+            contrato3 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede3, tarifa);
         	
         	//cria quartos
             //OBS: hotelTeste.getGerenteServico().cria.. -- cria objetos avulsos que seram usados para pesquisar 
