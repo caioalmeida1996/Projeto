@@ -59,7 +59,7 @@ public class MainLogin extends JFrame {
 	public MainLogin() {
 		setTitle("Hotel Riviera Campina");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 204);
+		setBounds(420, 230, 450, 204);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

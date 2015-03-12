@@ -84,7 +84,7 @@ public class TelaCheckIn extends JFrame {
 	public TelaCheckIn(final Hotel hotel) {
 		setTitle("Check In");
 		
-		setBounds(300, 120, 648, 430);
+		setBounds(420, 230, 648, 430);
 
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));

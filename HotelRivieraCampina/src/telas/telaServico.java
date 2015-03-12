@@ -31,7 +31,7 @@ public class telaServico extends JFrame {
 	public telaServico() {
 		setTitle("Servi\u00E7os");
 		
-		setBounds(100, 100, 450, 300);
+		setBounds(420, 230, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,6 +67,8 @@ public class telaServico extends JFrame {
 		JButton btnRestaurante = new JButton("Restaurante");
 		btnRestaurante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				telaServicoRestaurante TSR = new telaServicoRestaurante();
+				TSR.show();
 			}
 		});
 		btnRestaurante.setBounds(156, 135, 121, 23);

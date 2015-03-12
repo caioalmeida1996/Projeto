@@ -36,7 +36,7 @@ public class TelaHospedes extends JFrame {
 		
 		setTitle("Hospedes");
 		
-		setBounds(300, 120, 648, 430);
+		setBounds(420, 230, 648, 430);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

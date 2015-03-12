@@ -22,7 +22,7 @@ public class telaServicoCarro extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfDataEntrada;
 	private JTextField tfDataSaida;
-	private JTextField textField;
+	private JTextField tfHospedeCarro;
 
 	Color corFundo = new Color(244, 246, 245); 
 	Color corBotao = new Color(68, 133, 244);
@@ -37,7 +37,7 @@ public class telaServicoCarro extends JFrame {
 	public telaServicoCarro() {
 		setTitle("Carro");
 		
-		setBounds(100, 100, 450, 300);
+		setBounds(420, 230, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,7 +62,7 @@ public class telaServicoCarro extends JFrame {
 		contentPane.add(rdbtnSeguro);
 		
 		JLabel lblDataDeEntrada = new JLabel("Data de Entrada");
-		lblDataDeEntrada.setBounds(277, 11, 89, 14);
+		lblDataDeEntrada.setBounds(277, 11, 109, 14);
 		contentPane.add(lblDataDeEntrada);
 		
 		tfDataEntrada = new JTextField();
@@ -83,10 +83,10 @@ public class telaServicoCarro extends JFrame {
 		lblHospede.setBounds(10, 130, 74, 14);
 		contentPane.add(lblHospede);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 155, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tfHospedeCarro = new JTextField();
+		tfHospedeCarro.setBounds(10, 155, 86, 20);
+		contentPane.add(tfHospedeCarro);
+		tfHospedeCarro.setColumns(10);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
