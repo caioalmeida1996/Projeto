@@ -66,6 +66,10 @@ public class Contrato {
 		for (int i = 0; i < servicos.size(); i++) {
 			fatura += servicos.get(i).toString() + "/n";			
 		}
+		fatura += "duracao do contrato:" + duracaoContrato();
+		if((Calendar.getInstance().DAY_OF_YEAR - dataFinal) > 0){
+			fatura += "multa por "
+		}
 		
 	}
 	
