@@ -1,8 +1,6 @@
 package hospede;
 
 import java.util.Calendar;
-
-import contrato.Contrato;
 import endereco.Endereco;;
 
 /**
@@ -15,7 +13,7 @@ public class Hospede {
 	private String nome, cpf;
 	private Calendar dataNascimento;
 	private Endereco endereco;
-	private Contrato contrato;
+
 	
 	/**
 	 * Construtor da classe
@@ -28,13 +26,12 @@ public class Hospede {
 	 * @param endereco
 	 * 			endereco do hospede
 	 */
-	public Hospede(String nome, String cpf, Calendar dataNascimento, Endereco endereco, Contrato contrato) {
+	public Hospede(String nome, String cpf, Calendar dataNascimento, Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;
-		this.contrato = contrato;
 	}
 
 	/**
@@ -104,16 +101,6 @@ public class Hospede {
 		this.endereco = endereco;
 	}
 	
-	
-	
-	
-	public Contrato getContrato() {
-		return contrato;
-	}
-
-	public void setContrato(Contrato contrato) {
-		this.contrato = contrato;
-	}
 
 	@Override
 	public boolean equals(Object objeto) {

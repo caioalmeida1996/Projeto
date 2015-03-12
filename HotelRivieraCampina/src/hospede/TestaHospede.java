@@ -35,7 +35,7 @@ public class TestaHospede {
 		
 		String nome = "Maria";
 		String cpf = "1000";
-		hospede1 = new Hospede(nome, cpf, data, endereco, null);
+		hospede1 = new Hospede(nome, cpf, data, endereco);
 		
 		// Assertivas
 		
@@ -68,7 +68,7 @@ public class TestaHospede {
 		
 		String nome = "Maria";
 		String cpf = "1000";
-		hospede1 = new Hospede(nome, cpf, data, endereco, null);
+		hospede1 = new Hospede(nome, cpf, data, endereco);
 
 		// Assertivas
 		
@@ -111,7 +111,7 @@ public class TestaHospede {
 		
 		String nome = "Maria";
 		String cpf = "1000";
-		hospede1 = new Hospede(nome, cpf, data, endereco, null);
+		hospede1 = new Hospede(nome, cpf, data, endereco);
 
 		// Comparando um objeto com ele mesmo
 		
@@ -119,21 +119,21 @@ public class TestaHospede {
 		
 		// Comparando dois objetos com atributos identicos
 		
-		Hospede hospede2 = new Hospede(nome, cpf, data, endereco, null);
+		Hospede hospede2 = new Hospede(nome, cpf, data, endereco);
 		assertTrue(hospede1.equals(hospede2));
 		
 		// Comparando dois objetos com atributos distintos
 		
 		Calendar data2 = Calendar.getInstance();
 		data2.set(1980, 10, 25);
-		Hospede hospede3 = new Hospede(nome, cpf, data2, endereco, null);
+		Hospede hospede3 = new Hospede(nome, cpf, data2, endereco);
 		
 		assertFalse(hospede1.equals(hospede3));
 		assertFalse(hospede3.equals(hospede1));
 		
 		// Comparando dois hospedes instanciados com alguns atributos diferentes
 		
-		Hospede hospede4 = new Hospede("Benedita", "3333334", data, endereco, null);
+		Hospede hospede4 = new Hospede("Benedita", "3333334", data, endereco);
 		assertFalse(hospede1.equals(hospede4));
 		assertFalse(hospede4.equals(hospede1));
 		
@@ -161,7 +161,7 @@ public class TestaHospede {
 		
 		String nome = "Maria";
 		String cpf = "1000";
-		hospede1 = new Hospede(nome, cpf, data, endereco, null);
+		hospede1 = new Hospede(nome, cpf, data, endereco);
 		
 		String mensagem = "--INFORMACOES DO HOSPEDE--\n" +
 							"NOME: Maria\n" +

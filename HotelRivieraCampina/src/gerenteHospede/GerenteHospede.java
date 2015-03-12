@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import contrato.Contrato;
 import endereco.Endereco;
 import hospede.Hospede;
-import hotel.Hotel;
 
 public class GerenteHospede{
 
@@ -27,11 +25,8 @@ public class GerenteHospede{
         }
         
         //cria hospede
-        public Hospede criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco, Contrato contrato){
-        	Hospede hospedeNovo = new Hospede(nome, cpf, dataNascimento, endereco, contrato);
-        	if(contrato.equals(null)){
-        		return hospedeNovo;
-        	}
+        public Hospede criaHospede(String nome,String cpf,Calendar dataNascimento,Endereco endereco){
+        	Hospede hospedeNovo = new Hospede(nome, cpf, dataNascimento, endereco);
         	hospedes.add(hospedeNovo);
         	return hospedeNovo;
         }
@@ -75,17 +70,5 @@ public class GerenteHospede{
          	   }
 			return null;
         }
-        
-        
-        /*
-        public void setHospede(Hospede hospede) {
-                this.hospede = hospede;
-        }
-
-        public void setHospede(Hospede hospede) {
-                this.hospede = hospede;
-        }*/
-
-
 
 }

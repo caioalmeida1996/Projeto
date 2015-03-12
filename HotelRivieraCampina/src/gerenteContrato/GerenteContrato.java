@@ -1,5 +1,7 @@
 package gerenteContrato;
 
+import hospede.Hospede;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +17,8 @@ public class GerenteContrato {
 	}
 	
 	//criar,
-	public Contrato criarContrato(String numCartao){
-		Contrato contrato = new Contrato(numCartao);
+	public Contrato criarContrato(Hospede hospede, String numCartao){
+		Contrato contrato = new Contrato(hospede,numCartao);
 		contratos.add(contrato);
 		return contrato;
 	}

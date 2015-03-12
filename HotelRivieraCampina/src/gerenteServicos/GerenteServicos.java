@@ -24,10 +24,18 @@ import hotel.Hotel;
 
 public class GerenteServicos{
 	private Contrato contrato;
+	private int nPresidencial = 5;
+	private static int nLuxoSimples = 5;
+	private static int nLuxoDuplo = 15;
+	private static int nLuxoTriplo = 20;
+	private static int nExecutivoSimples = 5;
+	private static int nExecutivoDuplo = 15;
+	private static int nExecutivoTriplo = 20;
+	
 	
 
 
-	public GerenteServicos(){
+ 	public GerenteServicos(){
 		
 	}
 	
@@ -44,6 +52,7 @@ public class GerenteServicos{
 		if (this.contrato == null) {
 			return quarto;
 		}
+		nPresidencial--;
 		contrato.getServicos().add(quarto);
 		return quarto;
 	}
@@ -53,6 +62,22 @@ public class GerenteServicos{
 		if (this.contrato == null) {
 			return quarto;
 		}
+		
+		switch (tipoQuarto) {
+		case SIMPLES:
+			nLuxoSimples--;
+			break;
+		case DUPLO:
+			nLuxoDuplo--;
+			break;
+		case TRIPLO:
+			nLuxoTriplo--;
+			break;
+
+		default:
+			break;
+		}
+		
 		contrato.getServicos().add(quarto);
 		return quarto;
 	}
@@ -62,6 +87,22 @@ public class GerenteServicos{
 		if (this.contrato == null) {
 			return quarto;
 		}
+		
+		switch (tipoQuarto) {
+		case SIMPLES:
+			nExecutivoSimples--;
+			break;
+		case DUPLO:
+			nExecutivoDuplo--;
+			break;
+		case TRIPLO:
+			nExecutivoTriplo--;
+			break;
+
+		default:
+			break;
+		}
+		
 		contrato.getServicos().add(quarto);
 		return quarto;
 	}
@@ -190,6 +231,35 @@ public class GerenteServicos{
 		System.out.println(contrato);
 		if(contrato == null) throw new Exception("ERROR, contrato ausente.");
 		return contrato.getServicos();
+	}
+
+
+	public int getnPresidencial() {
+		return nPresidencial;
+	}
+
+	public int getnLuxoSimples() {
+		return nLuxoSimples;
+	}
+
+	public int getnLuxoDuplo() {
+		return nLuxoDuplo;
+	}
+
+	public int getnLuxoTriplo() {
+		return nLuxoTriplo;
+	}
+
+	public int getnExecutivoSimples() {
+		return nExecutivoSimples;
+	}
+
+	public int getnExecutivoDuplo() {
+		return nExecutivoDuplo;
+	}
+
+	public int getnExecutivoTriplo() {
+		return nExecutivoTriplo;
 	}
 	
 	
