@@ -24,19 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-//import com.toedter.calendar.JDateChooser;
-
-
-
-
-
-
-
-
-
-
-
-
 import contrato.Contrato;
 
 import javax.swing.JComboBox;
@@ -44,7 +31,7 @@ import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.text.MaskFormatter;
 
 import endereco.Endereco;
-import estrategiaDeCalculo.Tarifacao;
+import estrategiaDeCalculo.*;
 import quarto.Quarto;
 import quartoExecutivo.QuartoExecutivo;
 import quartoExecutivo.TemCamaExtra;
@@ -313,7 +300,7 @@ public class TelaCheckIn extends JFrame {
 					//CRIA O OBJETO HOSPEDE----------------------------------------------------------
 					
 					hospede = TelaPrincipal.hotel.getGerenteHospede().criaHospede(tfNome.getText(), tfCPF.getText(), calHospede, endereco, tfCartaoDeCredito.getText());
-					contrato = TelaPrincipal.hotel.getGerenteContrato().Checkin(calEntrada, calSaida, hospede, (Tarifacao) comboBoxTarifacao.getSelectedItem());
+					contrato = TelaPrincipal.hotel.getGerenteContrato().Checkin(calEntrada, calSaida, hospede, getTarifacao(comboBoxTarifacao.getSelectedIndex()));
 					
 					String itemSelecionado = comboBoxTipoDeQuarto.getSelectedItem().toString();
 					criaQuartos(calEntrada, calSaida, hospede, itemSelecionado);
@@ -429,11 +416,10 @@ public class TelaCheckIn extends JFrame {
 		lblTarifao.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		getContentPane().add(lblTarifao);
 		
-		
 		comboBoxTarifacao.setBounds(240, 225, 88, 20);
 		getContentPane().add(comboBoxTarifacao);
 		comboBoxTarifacao.addItem("São João");
-		comboBoxTarifacao.addItem("Natal");
+		comboBoxTarifacao.addItem("Natal/Reveillon");
 		comboBoxTarifacao.addItem("Alta Estação");
 		comboBoxTarifacao.addItem("Baixa Estação");
 		comboBoxTarifacao.addItem("Estação Simples");
@@ -443,14 +429,6 @@ public class TelaCheckIn extends JFrame {
 		comboBoxNdePessoas.addItem("2");
 		comboBoxNdePessoas.addItem("3");
 		comboBoxNdePessoas.addItem("4");
-		
-//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//		double width = screenSize.getWidth();
-//		double height = screenSize.getHeight();
-//		
-//		if (getContentPane().getWidth() == width && getContentPane().getHeight() == height){
-//			getContentPane().setLayout(new GridBagLayout());
-//		}
 
 	}
 	
@@ -520,6 +498,27 @@ public class TelaCheckIn extends JFrame {
 			}
 			break;
 		}
+	}
+	
+	public Tarifacao getTarifacao(int i){
+		switch(i) {
+			case 0:
+				SaoJoao saoJoao = new SaoJoao();
+				return saoJoao;
+			case 1:
+				NatalReveillon natalReveillon = new NatalReveillon();
+				return natalReveillon;
+			case 2:
+				AltaEstacao altaEstacao = new AltaEstacao();
+				return altaEstacao;
+			case 3:
+				BaixaEstacao baixaEstacao = new BaixaEstacao();
+				return baixaEstacao;
+			case 4:
+				EstacaoSimples estacaoSimples = new EstacaoSimples();
+				return estacaoSimples;
+		}
+		return null;
 	}
 	
 	public boolean temErro(){
