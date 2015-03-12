@@ -56,6 +56,12 @@ public class telaServico extends JFrame {
 		
 		
 		JButton btnBabysitter = new JButton("BabySitter");
+		btnBabysitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaServicoBabysitter TSB = new telaServicoBabysitter();
+				TSB.show();
+			}
+		});
 		btnBabysitter.setBounds(156, 101, 121, 23);
 		btnBabysitter.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
 		btnBabysitter.setForeground(Color.WHITE);
