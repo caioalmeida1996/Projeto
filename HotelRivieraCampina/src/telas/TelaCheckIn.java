@@ -1,6 +1,7 @@
 package telas;
 
 import hospede.Hospede;
+import hotel.Hotel;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -10,7 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.text.ParseException;
@@ -20,12 +25,19 @@ import java.util.Calendar;
 
 //import com.toedter.calendar.JDateChooser;
 
+
+
+
+
+
+
 import contrato.Contrato;
 
 import javax.swing.JComboBox;
 import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.text.MaskFormatter;
 
+import endereco.Endereco;
 import quarto.Quarto;
 import quartoExecutivo.QuartoExecutivo;
 import quartoLuxo.QuartoLuxo;
@@ -34,12 +46,13 @@ import servico.Servico;
 
 public class TelaCheckIn extends JFrame {
 
-
+	Color corFundo = new Color(244, 246, 245); 
+	Color corBotao = new Color(68, 133, 244);
 	private static final long serialVersionUID = 1L;
 	private JTextField tfNome;
 	private JTextField tfCPF;
 	private JTextField tfDataDeNascimento;
-	private JTextField tfEndereco;
+	private JTextField tfPais;
 	private JTextField tfCartaoDeCredito;
 	private MaskFormatter format_1; // Formato do CPf
 	private MaskFormatter format_2; // Formato da Data de Nascimento
@@ -51,6 +64,12 @@ public class TelaCheckIn extends JFrame {
 	private static ArrayList<Servico> servicos = new ArrayList<Servico>(); 
 	private Quarto quarto;
 	private Contrato contrato;
+	private JTextField tfEstado;
+	private JTextField tfCidade;
+	private JTextField tfRua;
+	private JTextField tfNumero;
+	private Hospede hospede;
+	
 	
 	
 	
@@ -62,25 +81,30 @@ public class TelaCheckIn extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCheckIn() {
+	public TelaCheckIn(final Hotel hotel) {
 		setTitle("Check In");
-
-		setBounds(300, 120, 572, 430);
+		
+		setBounds(300, 120, 648, 430);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(10, 53, 59, 14);
+		lblNome.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		lblNome.setBounds(10, 53, 113, 14);
 
 		tfNome = new JTextField();
-		tfNome.setBounds(79, 53, 169, 20);
+		tfNome.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
+		tfNome.setBounds(80, 47, 169, 20);
 		tfNome.setColumns(10);
+		tfNome.setBorder(null);
 
 		// Criando jCalendar
 
 		JLabel lblCpf = new JLabel("CPF:");
-		lblCpf.setBounds(10, 79, 42, 14);
+		lblCpf.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		lblCpf.setBounds(10, 79, 113, 14);
 
 		JLabel lblDataDeNascimento = new JLabel("Nascimento:");
-		lblDataDeNascimento.setBounds(10, 105, 80, 14);
+		lblDataDeNascimento.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		lblDataDeNascimento.setBounds(10, 104, 113, 14);
 
 		tfCPF = new JTextField();
 		tfCPF.setBounds(79, 79, 169, 20);
@@ -99,15 +123,18 @@ public class TelaCheckIn extends JFrame {
 		}
 
 		tfCPF = new JFormattedTextField(format_1);
-		tfCPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfCPF.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		tfCPF.setText("( ) - ");
-		tfCPF.setBounds(80, 76, 169, 23);
+		tfCPF.setBounds(80, 73, 169, 20);
 		getContentPane().add(tfCPF);
 		tfCPF.setColumns(10);
+		tfCPF.setBorder(null);
 
 		tfDataDeNascimento = new JTextField();
-		tfDataDeNascimento.setBounds(80, 102, 129, 20);
+		tfDataDeNascimento.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		tfDataDeNascimento.setBounds(80, 98, 169, 20);
 		tfDataDeNascimento.setColumns(10);
+		tfDataDeNascimento.setBorder(null);
 
 		JLabel tfDataDeNascimento_1 = new JLabel("tfDataDeNascimento:");
 		tfDataDeNascimento_1.setFont(new Font("NanumGothic", Font.PLAIN, 14));
@@ -139,18 +166,23 @@ public class TelaCheckIn extends JFrame {
 		});
 
 		JLabel lblEndereco = new JLabel("Endereco:");
-		lblEndereco.setBounds(295, 56, 71, 14);
+		lblEndereco.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		lblEndereco.setBounds(394, 22, 113, 14);
 
 		JLabel lblN = new JLabel("Cartao de Credito:");
-		lblN.setBounds(295, 82, 113, 14);
+		lblN.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		lblN.setBounds(10, 129, 113, 14);
 
-		tfEndereco = new JTextField();
-		tfEndereco.setBounds(407, 50, 86, 20);
-		tfEndereco.setColumns(10);
+		tfPais = new JTextField();
+		tfPais.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
+		tfPais.setBounds(393, 47, 169, 20);
+		tfPais.setColumns(10);
+		tfPais.setBorder(null);
 
 		tfCartaoDeCredito = new JTextField();
 		tfCartaoDeCredito.setBounds(407, 79, 86, 20);
 		tfCartaoDeCredito.setColumns(10);
+		tfCartaoDeCredito.setBorder(null);
 
 		JLabel tfCartaoDeCredito_1 = new JLabel("tfCartaoDeCredito:");
 		tfCartaoDeCredito_1.setFont(new Font("NanumGothic", Font.PLAIN, 14));
@@ -165,19 +197,23 @@ public class TelaCheckIn extends JFrame {
 		}
 
 		tfCartaoDeCredito = new JFormattedTextField(format_3);
-		tfCartaoDeCredito.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfCartaoDeCredito.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
 		tfCartaoDeCredito.setText("( ) - ");
-		tfCartaoDeCredito.setBounds(419, 74, 113, 28);
+		tfCartaoDeCredito.setBounds(106, 123, 169, 20);
 		getContentPane().add(tfCartaoDeCredito);
 		tfCartaoDeCredito.setColumns(10);
+		tfCartaoDeCredito.setBorder(null);
 
 		JLabel lblQuarto = new JLabel("Quarto:");
+		lblQuarto.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		lblQuarto.setBounds(20, 195, 55, 14);
+		RadioButtonCamaExtra.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 
 		
 		RadioButtonCamaExtra.setBounds(20, 247, 111, 23);
 
 		JLabel label = new JLabel("N\u00BA de pessoas");
+		label.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		label.setBounds(20, 223, 88, 14);
 
 		comboBoxTipoDeQuarto.setBounds(68, 192, 105, 20);
@@ -190,9 +226,11 @@ public class TelaCheckIn extends JFrame {
 		comboBoxTipoDeQuarto.addItem("Executivo Triplo");
 
 		JLabel label_1 = new JLabel("Data de Entrada");
+		label_1.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		label_1.setBounds(247, 192, 94, 14);
 
 		JLabel label_5 = new JLabel("Data de Saida");
+		label_5.setFont(new Font("Arial Unicode MS", Font.PLAIN, 11));
 		label_5.setBounds(393, 192, 86, 14);
 //		JDateChooser entradaJdate = new JDateChooser();
 //		entradaJdate.getCalendarButton().addActionListener(
@@ -216,7 +254,7 @@ public class TelaCheckIn extends JFrame {
 		getContentPane().add(tfDataDeNascimento);
 		getContentPane().add(RadioButtonCamaExtra);
 		getContentPane().add(lblEndereco);
-		getContentPane().add(tfEndereco);
+		getContentPane().add(tfPais);
 		getContentPane().add(lblN);
 		getContentPane().add(tfCartaoDeCredito);
 
@@ -225,8 +263,12 @@ public class TelaCheckIn extends JFrame {
 		getContentPane().add(comboBoxNdePessoas);
 
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		btnSalvar.setForeground(Color.WHITE);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				Endereco endereco = new Endereco(tfPais.getText(), tfEstado.getText(), tfCidade.getText(), tfRua.getText(), tfNumero.getText());
 				
 				temErro();
 				while (temErro() == false){
@@ -255,9 +297,11 @@ public class TelaCheckIn extends JFrame {
 						e.printStackTrace();
 					}
 					//CRIA O OBJETO HOSPEDE----------------------------------------------------------
-//					Hospede hospede = new Hospede(tfNome.getText(),tfCPF.getText(), calHospede, tfEndereco.getText(), tfCartaoDeCredito.getText());
-//					 
-//					String itemSelecionado = comboBoxTipoDeQuarto.getSelectedItem().toString();
+					hospede = hotel.getGerenteHospede().criaHospede(tfNome.getText(), tfCPF.getText(), calHospede, endereco);
+					contrato = hotel.getGerenteContrato().Checkin(calEntrada, calSaida, hospede, tfCartaoDeCredito.getText());
+					
+					
+					String itemSelecionado = comboBoxTipoDeQuarto.getSelectedItem().toString();
 //					criaQuartos(calEntrada, calSaida, hospede, itemSelecionado);
 //					servicos.add(quarto);
 //					contrato = new Contrato(hospede, calEntrada, calSaida, servicos);
@@ -272,8 +316,14 @@ public class TelaCheckIn extends JFrame {
 		});
 		btnSalvar.setBounds(10, 332, 161, 50);
 		getContentPane().add(btnSalvar);
+		btnSalvar.setBorder(null);
+		btnSalvar.setBackground(corBotao);
 
 		JButton btnFechar = new JButton("Fechar");
+		btnFechar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		btnFechar.setForeground(Color.WHITE);
+		btnFechar.setBorder(null);
+		btnFechar.setBackground(corBotao);
 		btnFechar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
@@ -287,15 +337,65 @@ public class TelaCheckIn extends JFrame {
 		tfDataEntrada.setBounds(252, 221, 114, 19);
 		getContentPane().add(tfDataEntrada);
 		tfDataEntrada.setColumns(10);
+		tfDataEntrada.setBorder(null);
 
 		tfDataSaida = new JTextField();
 		tfDataSaida.setBounds(393, 221, 114, 19);
 		getContentPane().add(tfDataSaida);
 		tfDataSaida.setColumns(10);
+		tfDataSaida.setBorder(null);
+		
+		JLabel lblPais = new JLabel("Pais:");
+		lblPais.setBounds(320, 53, 46, 14);
+		getContentPane().add(lblPais);
+		
+		JLabel lblEstado = new JLabel("Estado:");
+		lblEstado.setBounds(320, 79, 46, 14);
+		getContentPane().add(lblEstado);
+		
+		JLabel lblCidade = new JLabel("Cidade:");
+		lblCidade.setBounds(320, 104, 46, 14);
+		getContentPane().add(lblCidade);
+		
+		JLabel lblRua = new JLabel("Rua:");
+		lblRua.setBounds(320, 129, 46, 14);
+		getContentPane().add(lblRua);
+		
+		JLabel lblNumero = new JLabel("Numero:");
+		lblNumero.setBounds(320, 155, 46, 14);
+		getContentPane().add(lblNumero);
+		
+		tfEstado = new JTextField();
+		tfEstado.setBounds(393, 73, 169, 20);
+		getContentPane().add(tfEstado);
+		tfEstado.setColumns(10);
+		
+		tfCidade = new JTextField();
+		tfCidade.setBounds(393, 98, 200, 20);
+		getContentPane().add(tfCidade);
+		tfCidade.setColumns(10);
+		
+		tfRua = new JTextField();
+		tfRua.setBounds(393, 123, 200, 20);
+		getContentPane().add(tfRua);
+		tfRua.setColumns(10);
+		
+		tfNumero = new JTextField();
+		tfNumero.setBounds(393, 149, 200, 20);
+		getContentPane().add(tfNumero);
+		tfNumero.setColumns(10);
 		comboBoxNdePessoas.addItem("1");
 		comboBoxNdePessoas.addItem("2");
 		comboBoxNdePessoas.addItem("3");
 		comboBoxNdePessoas.addItem("4");
+		
+//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//		double width = screenSize.getWidth();
+//		double height = screenSize.getHeight();
+//		
+//		if (getContentPane().getWidth() == width && getContentPane().getHeight() == height){
+//			getContentPane().setLayout(new GridBagLayout());
+//		}
 
 	}
 //	public void criaQuartos(Calendar calEntrada, Calendar calSaida, Hospede hospede, String itemSelecionado){
@@ -375,7 +475,7 @@ public class TelaCheckIn extends JFrame {
 			teveErro = true;
 		}
 		
-		if(tfEndereco.getText().equals("") || tfNome.getText().equals("")){
+		if(tfPais.getText().equals("") || tfNome.getText().equals("")){
 			JOptionPane.showMessageDialog(null,"Nome e Endereco nao podem ser vazios");
 			teveErro = true;
 		}

@@ -19,12 +19,9 @@ public class TelaPrincipal extends JFrame {
 	
 	Color corFundo = new Color(244, 246, 245); 
 	Color corBotao = new Color(68, 133, 244);
-	
+	private Hotel hotel = new Hotel();
 	private JPanel contentPane;
 
-	/**
-	 * Create the frame.
-	 */
 	public TelaPrincipal() {
 		
 		setTitle("Hotel Riviera Campina");
@@ -34,16 +31,16 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		Hotel hotel = new Hotel();
+		contentPane.setBackground(corFundo);
 		
 		JButton btnCheckIn = new JButton("Check In");
 		btnCheckIn.setForeground(Color.WHITE);
 		btnCheckIn.setBorder(null);
 		btnCheckIn.setBackground(corBotao);
+
 		btnCheckIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCheckIn TH = new TelaCheckIn();
+				TelaCheckIn TH = new TelaCheckIn(hotel);
 				TH.show();
 			}
 		});

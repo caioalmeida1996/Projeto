@@ -1,8 +1,13 @@
 package telas;
 
+import hotel.Hotel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,7 +26,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.border.LineBorder;
+
 import java.awt.SystemColor;
 
 public class MainLogin extends JFrame {
@@ -112,7 +119,7 @@ public class MainLogin extends JFrame {
 		btnEntrar.setBorder(null);
 		btnEntrar.setBackground(corBotao);
 		
-		btnEntrar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		btnEntrar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
 		btnEntrar.setBounds(10, 126, 194, 29);
 		contentPane.add(btnEntrar);
 		
@@ -128,9 +135,27 @@ public class MainLogin extends JFrame {
 		btnCancelar.setBorder(null);
 		btnCancelar.setBackground(corBotao);
 		
-		btnCancelar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
+		btnCancelar.setFont(new Font("Arial Unicode MS", Font.PLAIN, 18));
 		btnCancelar.setBounds(215, 126, 194, 29);
 		contentPane.add(btnCancelar);
+		
+//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//		double width = screenSize.getWidth();
+//		double height = screenSize.getHeight();
+//		
+//		if (getContentPane().getWidth() == width && getContentPane().getHeight() == height){
+//			getContentPane().setLayout(new GridBagLayout());
+//		}
+		
+//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//		double width = screenSize.getWidth();
+//		double height = screenSize.getHeight();
+//
+//		System.out.println(width);
+//		System.out.println(height);
+//		System.out.println(getContentPane().getWidth());
+//		System.out.println(getContentPane().getHeight());
+		
 	}
 
 }
