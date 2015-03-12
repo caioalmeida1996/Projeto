@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import quarto.Quarto;
+
 import hospede.Hospede;
 import servico.*;
 
@@ -20,7 +20,8 @@ public class Contrato {
 	private Hospede hospede;
 	private List<Servico> servicos;
 	private String estadoDoContrato;
-	Calendar dataInicial,dataFinal;
+	private Calendar dataInicial,dataFinal;
+	private checkout checkout; 
 	
 	public Contrato(Calendar dataInicial, Calendar dataFinal,Hospede hospede,String numCartao) {
 		super();
@@ -61,22 +62,51 @@ public class Contrato {
 		estadoDoContrato = "ABERTO";
 	}
 	
-	public void checkout(){
-		String fatura = null;
+	public contrato.checkout checkout(){
+		String fatura = "FATURA DO CONTRATO: " + "/n";
+		int custo = 0;
+		
 		for (int i = 0; i < servicos.size(); i++) {
-			fatura += servicos.get(i).toString() + "/n";			
+			fatura += servicos.get(i).toString() + "/n";
+			fatura += "------------------------" + "/n";
+			custo += servicos.get(i).getCusto();
 		}
 		fatura += "duracao do contrato:" + duracaoContrato();
-		if((Calendar.getInstance().DAY_OF_YEAR - dataFinal) > 0){
-			fatura += "multa por "
-		}
-		
+
+		checkout = new checkout(fatura, custo);
+		estadoDoContrato = "FECHADO";
+		return checkout;
 	}
+
+	private int DiferencaDiaFinaDiaAtual(){
+		return Calendar.getInstance().DAY_OF_YEAR - dataFinal.DAY_OF_YEAR;}
 	
 	public int duracaoContrato(){
 		int duracao = dataFinal.DAY_OF_YEAR - dataInicial.DAY_OF_YEAR;
 		return duracao;
 	}
+
+	public Calendar getDataInicial() {
+		return dataInicial;
+	}
+
+	public void setDataInicial(Calendar dataInicial) {
+		this.dataInicial = dataInicial;
+	}
+
+	public Calendar getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(Calendar dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
+	public String getEstadoDoContrato() {
+		return estadoDoContrato;
+	}
+	
+	
 	
 	
 		

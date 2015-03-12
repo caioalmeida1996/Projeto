@@ -3,9 +3,11 @@ package gerenteContrato;
 import hospede.Hospede;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import contrato.Contrato;
+import contrato.checkout;
 
 public class GerenteContrato {
 	
@@ -17,8 +19,9 @@ public class GerenteContrato {
 	}
 	
 	//criar,
-	public Contrato criarContrato(Hospede hospede, String numCartao){
-		Contrato contrato = new Contrato(hospede,numCartao);
+	public Contrato Checkin(Calendar dataInicial, Calendar dataFinal,Hospede hospede, String numCartao){
+		Contrato contrato = new Contrato(dataInicial,dataFinal, hospede,numCartao);
+		contrato.checkin();
 		contratos.add(contrato);
 		return contrato;
 	}
@@ -51,6 +54,10 @@ public class GerenteContrato {
 		return contratos;
 	}
 	
+	
+	public checkout checkout(Contrato contrato){
+		return contrato.checkout();
+	}
 	
 
 }

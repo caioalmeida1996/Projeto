@@ -55,9 +55,9 @@ public class HotelTest {
             hospede3 = hotelTeste.getGerenteHospede().criaHospede("gullo", "2222222", Calendar.getInstance(), endereco3);
         		
             //cria 3 contratos
-            contrato1 = hotelTeste.getGerenteContrato().criarContrato(hospede1, "1111111");
-            contrato2 = hotelTeste.getGerenteContrato().criarContrato(hospede2, "2222222");
-            contrato3 = hotelTeste.getGerenteContrato().criarContrato(hospede3, "3333333");
+            contrato1 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede1, "1111111");
+            contrato2 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede2, "2222222");
+            contrato3 = hotelTeste.getGerenteContrato().Checkin(Calendar.getInstance(), Calendar.getInstance(),hospede3, "3333333");
         	
         	//cria quartos
             //OBS: hotelTeste.getGerenteServico().cria.. -- cria objetos avulsos que seram usados para pesquisar 
@@ -78,14 +78,34 @@ public class HotelTest {
             endereco3 = new Endereco("br", "pb", "cg", "02", "02");
             
             
-            //---------manipulando hospede------
+            hotelTeste.getGerenteServico(contrato1).criaServicoQuartoExecutivo(Calendar.getInstance(), Calendar.getInstance(), TipoQuartoExecutivo.SIMPLES,TemCamaExtra.SIM );
+            hotelTeste.getGerenteServico(contrato1).criaServicoSuplementarAluguelCarros(Calendar.getInstance(), Calendar.getInstance(), "asd123", TemTanqueCheio.SIM, TemSeguro.SIM, TipoCarro.EXECUTIVO);
+            hotelTeste.getGerenteServico(contrato1).criaServicoSuplementarRestaurante(Calendar.getInstance(), Calendar.getInstance(), 100);
             
-            hotelTeste.getGerenteHospede().getHospedes(); // retorna a lista detodos os hospdes
-            hotelTeste.getGerenteHospede().pesquisaHospede("nome do hospede"); //pesquisa na lista de hospede a prti do nome
-          //  hotelTeste.getGerenteHospede().atualizaHospede(hospede, nome, cpf, dataNascimento, endereco);
-           
+            System.out.println(hotelTeste.getGerenteContrato().checkout(contrato1).getFatura());
+            System.out.println("preco total: " + hotelTeste.getGerenteContrato().checkout(contrato1).getCusto());
+            
+        
               
         }
+        
+      //@Test
+        public void testGerenteHospede() throws Exception{
+        	System.out.println(hotelTeste.getGerenteHospede().getHospedes());
+        	System.out.println(hotelTeste.getGerenteHospede().pesquisaHospede("heitor"));
+        	System.out.println("--------------------------------------");
+        	hotelTeste.getGerenteHospede().atualizaHospede(hospede2, "dsrgasrg", null, null,null );
+        	System.out.println(hotelTeste.getGerenteHospede().getHospedes());
+        	System.out.println("--------------------------------------");
+        	hotelTeste.getGerenteHospede().removeHospede(hospede3);
+        	System.out.println(hotelTeste.getGerenteHospede().pesquisaHospede("heitor"));
+            System.out.println("-------------------------------------");
+            //testGetContratos();
+             
+            // hotelTeste.getGerenteHospede().criaHospede(nome, cpf, dataNascimento, endereco, contrato);
+             
+             
+             }
         
         
         
