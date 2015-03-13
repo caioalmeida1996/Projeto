@@ -28,7 +28,7 @@ import hotel.Hotel;
  */
 public class GerenteServicos{
 	private Contrato contrato;
-	private int nPresidencial = 5;
+	private static int nPresidencial = 5;
 	private static int nLuxoSimples = 5;
 	private static int nLuxoDuplo = 15;
 	private static int nLuxoTriplo = 20;
@@ -322,15 +322,12 @@ public class GerenteServicos{
 	 */
 	public AluguelCarro atualizarServicoSuplementarCarro(AluguelCarro carro, Calendar dataInicial,Calendar dataFinal, String placa, TemTanqueCheio tanque, TemSeguro seguro, TipoCarro tipo){
 		if(!(dataFinal == null)){
-			System.out.println("1");
 			carro.setDataFinal(dataFinal);
 			}
 		if(!(dataInicial == null)){
-			System.out.println("2");
 			carro.setDataFinal(dataInicial);
 			}
 		if(!(placa == null)){
-			System.out.println("3");
 			carro.setPlaca(placa);
 			}
 		if(!(tanque == null)){
@@ -404,6 +401,36 @@ public class GerenteServicos{
 	 */
 	public void removeServico(Servico servico) throws Exception{
 		if(contrato.equals(null)) throw new Exception("ERROR, contrato ausente.");
+		if(servico instanceof QuartoExecutivo) {
+			QuartoExecutivo quarto = (QuartoExecutivo) servico;
+			switch (quarto.getTipoQuarto()) {
+			case SIMPLES:
+				nExecutivoSimples++;
+				break;
+			case DUPLO:
+				nExecutivoDuplo++;
+				break;
+			default:
+				nExecutivoTriplo++;
+			}			
+		}
+		
+		if(servico instanceof QuartoLuxo) {
+			QuartoLuxo quarto = (QuartoLuxo) servico;
+			switch (quarto.getTipoQuarto()) {
+			case SIMPLES:
+				nLuxoSimples++;
+				break;
+			case DUPLO:
+				nLuxoDuplo++;
+				break;
+			default:
+				nLuxoTriplo++;
+			}			
+		}
+		if(servico instanceof SuitePresidencial) {
+		nPresidencial++;	}
+		
 		contrato.getServicos().remove(servico);
 	}
 
@@ -413,7 +440,6 @@ public class GerenteServicos{
 	 * 		retorna uma lista de servicos do contrato
 	 */
 	public List<Servico> getServicos() throws Exception {
-		System.out.println(contrato);
 		if(contrato == null) throw new Exception("ERROR, contrato ausente.");
 		return contrato.getServicos();
 	}

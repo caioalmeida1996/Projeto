@@ -14,7 +14,7 @@ public class TestaAluguelCarro {
 	@Before
 	public void iniciaDatas(){
 		data1 = Calendar.getInstance();
-		data2 = Calendar.getInstance();
+		data2 = Calendar.getInstance(); 
 	}
 	
 	@Test

@@ -125,6 +125,7 @@ public class Contrato {
 		
 		checkout = new checkout(fatura, custo);
 		estadoDoContrato = "FECHADO";
+		//servicos.clear();
 		return checkout;
 	}
 

@@ -31,14 +31,6 @@ public class checkout {
 		return Fatura;
 	}
 
-	/**
-	 * 
-	 * @param fatura 
-	 * 		troca uma fatura por outra
-	 */
-	public void setFatura(String fatura) {
-		Fatura = fatura;
-	}
 
 	/**
 	 * 
@@ -49,14 +41,7 @@ public class checkout {
 		return custo;
 	}
 
-	/**
-	 * 
-	 * @param custo
-	 * 		um novo custo no chekout;
-	 */
-	public void setCusto(double custo) {
-		this.custo = custo;
-	}
+
 
 	
 }

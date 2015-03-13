@@ -60,7 +60,7 @@ public class GerenteContrato {
 				return contratos.get(i);
 			}
 		}
-		return null;
+		return null; 
 	}
 	
 	
@@ -118,9 +118,11 @@ public class GerenteContrato {
 	 * @return um objeto checkout contendo a custo do contrato e a fatura de todos os servicos
 	 */
 	public checkout checkout(Contrato contrato){
+		//System.out.println(contrato.getServicos());
+		checkout tmp = contrato.checkout();
 		removeContrato(contrato);
 		nCheckout++;
-		return contrato.checkout();
+		return tmp;
 	}
 
 	/**
