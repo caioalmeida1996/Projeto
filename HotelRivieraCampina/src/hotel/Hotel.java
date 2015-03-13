@@ -59,7 +59,11 @@ public class Hotel {
 			return gerenteContrato;
 			
 		}
-		
+		/**
+		 * realiza o checkout do contrato
+		 * @param contrato contrato a ser realizado o checkout
+		 * @return um objeto chekout contendo o preco e a fatura
+		 */
 		public checkout Checkout(Contrato contrato) throws Exception{
 			checkout resultado = this.getGerenteContrato().checkout(contrato);
 			getGerenteHospede().removeHospede(contrato.getHospede());
