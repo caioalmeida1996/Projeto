@@ -59,6 +59,7 @@ public class TelaCheckIn extends JFrame {
 	private JTextField tfDataSaida;
 	private JComboBox<String> comboBoxTipoDeQuarto = new JComboBox<String>();
 	private JComboBox<String> comboBoxTarifacao = new JComboBox<String>();
+	private JComboBox<String> comboBoxNdePessoas = new JComboBox<String>();
 	private JRadioButton rbCamaExtra = new JRadioButton("Cama extra");
 	private static ArrayList<Servico> servicos = new ArrayList<Servico>(); 
 	private Quarto quarto;
@@ -260,7 +261,6 @@ public class TelaCheckIn extends JFrame {
 		getContentPane().add(lblN);
 		getContentPane().add(tfCartaoDeCredito);
 
-		JComboBox<String> comboBoxNdePessoas = new JComboBox<String>();
 		comboBoxNdePessoas.setBounds(118, 250, 53, 20);
 		getContentPane().add(comboBoxNdePessoas);
 
@@ -538,10 +538,44 @@ public class TelaCheckIn extends JFrame {
 			teveErro = true;
 		}
 		
-		if(tfPais.getText().equals("") || tfNome.getText().equals("")){
+		if (tfPais.getText().equals("") || tfNome.getText().equals("")){
 			JOptionPane.showMessageDialog(null,"Nome e Endereco nao podem ser vazios");
 			teveErro = true;
 		}
+		
+		if (tfCidade.getText().equals("")){
+			JOptionPane.showMessageDialog(null, "Cidade não pode ser vazio");
+			teveErro = true;
+		}
+		
+		if (tfRua.getText().equals("")){
+			JOptionPane.showMessageDialog(null, "Rua não pode ser vazio");
+			teveErro = true;
+		}
+		
+		if (tfNumero.getText().equals("")){
+			JOptionPane.showMessageDialog(null, "Numero não pode ser vazio");
+		}
+		
+		if (tfDataEntrada.getText() == tfDataSaida.getText() || tfDataEntrada.getText() > tfDataSaida.getText()){
+			JOptionPane.showMessageDialog(null, "Data Incorreta");
+			teveErro = true;		
+		}	
+		
+		if (comboBoxTarifacao == null){
+			JOptionPane.showMessageDialog(null, "Escolha o tipo de Tarifação");
+			teveErro = true;
+		}
+		
+		if (comboBoxTipoDeQuarto == null){
+			JOptionPane.showMessageDialog(null, "Escolha um tipo de Quarto");
+			teveErro = true;
+		}
+		
+		if (comboBoxNdePessoas == null){
+			JOptionPane.showMessageDialog(null, "Escolha o número de Pessoas");			
+		}
 		return teveErro;
 	}
+	
 }
